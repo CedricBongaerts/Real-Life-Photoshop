@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+		<script src="../cordova.js"></script>
+		<script src="../js/toast.js"></script>
+		<title>Saloon Wars</title>
+		<script>
+			function onLoad() {
+				document.addEventListener("offline", onOffline, false);
+				document.addEventListener("deviceready", onDeviceReady, true);
+			}
+
+			function onDeviceReady() {
+				searchHighscores();
+				if (localStorage.length != 0) {
+					$('#logoutBtn').on('touchstart', function(e) {
+						window.location.href = "../index.html";
+						$('.alert').empty();
+						localStorage.clear();
+						shortToast('You are now logged out');
+						e.preventDefault();
+						$.ajax({
+							url : 'http://saloonwars.eu1.frbit.net/user/logout',
+							type : 'post',
+							dataType : 'json',
+							data : $('#logoutFrm').serialize(),
+							success : function(data) {
+							},
+							error : function(xhr, ajaxOptions, thrownError) {
+								$(".alert").append(xhr.responseText);
+							}
+						});
+						return false;
+					});
+				}
+
+				$("#top10Btn").on('touchstart', function(e) {
+					e.preventDefault();
+					$("#loader").empty();
+					$("#highscoresTitle").text("Overall top 10");
+					$('table#highscores .row').empty();
+					$('#loader').append('<img src="../img/ajax-loader.gif" id="ajax-loader" />');
+					checkHighscores();
+				});
+
+				$("#criminalsBtn").on('touchstart', function(e) {
+					e.preventDefault();
+					$("#loader").empty();
+					$("#highscoresTitle").text("Criminal highscores");
+					$('table#highscores .row').empty();
+					$('#loader').append('<img src="../img/ajax-loader.gif" id="ajax-loader" />');
+					checkHighscoresCriminals();
+
+				});
+
+				$("#officersBtn").on('touchstart', function(e) {
+					e.preventDefault();
+					$("#loader").empty();
+					$("#highscoresTitle").text("Officer highscores");
+					$('table#highscores .row').empty();
+					$('#loader').append('<img src="../img/ajax-loader.gif" id="ajax-loader" />');
+					checkHighscoresOfficers();
+				});
+				$("#highscores").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'highscores.html';
+				});
+				$("#account").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'dashboard.html';
+				});
+				$("#logo").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'play.html';
+				});
+			}
+
+			function onOffline() {
+				$(".btn-login").off("touchstart").attr("disabled", "disabled");
+				$(".button").click(function(e) {
+					e.preventDefault();
+					shortToast("Please check your internet connection.");
+				});
+				longToast("Please check your internet connection.");
+			}
+
+			function searchHighscores() {
+				$("#loader").empty();
+				$("#highscoresTitle").text("Overall top 10");
+				$('#loader').append('<img src="../img/ajax-loader.gif" id="ajax-loader" />');
+				checkHighscores();
+			}
+
+			function checkHighscores() {
+				$.ajax({
+					url : 'http://saloonwars.eu1.frbit.net/game/highscores',
+					type : 'get',
+					dataType : 'json',
+					success : function(data) {
+						var i = 0;
+						$("#loader").empty();
+						for (index in data) {
+							i++;
+							$('table#highscores').append('<tr class="row">' + '<td class="number">' + i + '</td>' + '<td>' + data[index].username + '</td>' + '<td>' + data[index].points + '</td>' + '</tr>');
+						}
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						$('table#highscores').append("<tr>no results retrieved" + xhr.responseText + '</tr>');
+						// <- same here, your own div, p, span, whatever you wish to use
+					}
+				});
+			}
+
+			function checkHighscoresCriminals() {
+				$.ajax({
+					url : 'http://saloonwars.eu1.frbit.net/game/highscores-criminals',
+					type : 'get',
+					dataType : 'json',
+					success : function(data) {
+						var i = 0;
+						$("#loader").empty();
+						for (index in data) {
+							i++;
+							$('table#highscores').append('<tr class="row">' + '<td class="number">' + i + '</td>' + '<td>' + data[index].username + '</td>' + '<td>' + data[index].points + '</td>' + '</tr>');
+						}
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						$('table#highscores').append("<tr>no results retrieved" + xhr.responseText + '</tr>');
+						// <- same here, your own div, p, span, whatever you wish to use
+					}
+				});
+			}
+
+			function checkHighscoresOfficers() {
+				$.ajax({
+					url : 'http://saloonwars.eu1.frbit.net/game/highscores-officers',
+					type : 'get',
+					dataType : 'json',
+					success : function(data) {
+						var i = 0;
+						$("#loader").empty();
+						for (index in data) {
+							i++;
+							$('table#highscores').append('<tr class="row">' + '<td class="number">' + i + '</td>' + '<td>' + data[index].username + '</td>' + '<td>' + data[index].points + '</td>' + '</tr>');
+						}
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						$('table#highscores').append("<tr>no results retrieved" + xhr.responseText + '</tr>');
+						// <- same here, your own div, p, span, whatever you wish to use
+					}
+				});
+			}
+		</script>
+	</head>
+	<body onload="onLoad();">
+		<div class="navbar home">
+			<div class="navbar-inner">
+				<div class="container">
+					<ul class="nav">
+						<li class='icon logo'>
+							<a href="#"><img id="logo" src="../img/cityterror.svg"></a>
+						</li>
+						<li class='icon play'>
+							<a href="#"><img src="../img/account.svg" id="account"></a>
+						</li>
+						<li class='icon'>
+							<a href="#"><img id="highscores" src="../img/highscores_start.svg" ></a>
+						</li>
+						<li class='icon play'>
+							<form id="logoutFrm">
+								<input type="hidden" name="userId" class="userId" />
+								<a href="#" id="logoutBtn"><img src="../img/logout.svg"></a>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="highscores">
+				<p class="internet"></p>
+				<h2 id="highscoresTitle"></h2>
+				<table id="highscores">
+					<tr>
+						<th class="number">#</th>
+						<th>Username</th>
+						<th>Score</th>
+					</tr>
+					<tr id="loader"></tr>
+				</table>
+				<div class="highscoreButtons">
+					<input type="button" class="btn-highscores" value="top 10" id="top10Btn">
+					<input type="button" class="btn-highscores" value="criminals" id="criminalsBtn">
+					<input type="button" class="btn-highscores" value="officers" id="officersBtn">
+				</div>
+			</div>
+		</div>
+		<div class="front">
+			<img id="grass" src="../img/grass.svg">
+			<img id="cacti1" src="../img/cacti1.svg">
+			<img id="ground1" src="../img/ground1.svg">
+			<img id="cacti2" src="../img/cacti2.svg">
+			<img id="ground2" src="../img/ground2.svg">
+			<img id="cacti3" src="../img/cacti3.svg">
+			<img id="ground3" src="../img/ground3.svg">
+		</div>
+	</body>
+</html>

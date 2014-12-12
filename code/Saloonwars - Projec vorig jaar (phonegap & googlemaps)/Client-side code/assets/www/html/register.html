@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+		<script src="../cordova.js"></script>
+		<script src="../js/toast.js"></script>
+		<title>Saloon Wars</title>
+		<script>
+			function onLoad() {
+				document.addEventListener("online", onOnline, false);
+				document.addEventListener("offline", onOffline, false);
+				document.addEventListener("deviceready", onDeviceReady, true);
+			}
+
+			function onDeviceReady() {
+				$('#registerBtn').on('touchstart',function(e) {
+					$('.alert').empty();
+					e.preventDefault();
+					$.ajax({
+						url : 'http://saloonwars.eu1.frbit.net/user/create',
+						type : 'post',
+						dataType : 'json',
+						data : $('form#register').serialize(),
+						success : function(data) {
+							saveUser(data);
+							window.location = "dashboard.html";
+							// <- this would have to be your own way of showing that user is logged in
+						},
+						error : function(xhr, ajaxOptions, thrownError) {
+							var str = xhr.responseText;
+							if (!$("#username").val()) {
+								$(".alert").append("Please fill in a username.</br>");
+							}
+							if (!$("#email").val()) {
+								$('.alert').append("Please fill in a valid email.</br>");
+							}
+							if ($("#password").val() != $("#password_confirmation").val()) {
+								$('.alert').append("Passwords do not match.</br>");
+							}
+							if (str.indexOf("The username has already been taken.") >= 0) {
+								$('.alert').append("The username has already been taken.</br>");
+							}
+							if (str.indexOf("The email has already been taken.") >= 0) {
+								$('.alert').append("The email has already been taken.</br>");
+							}
+						}
+					});
+					return false;
+				});
+				$("#highscores").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'highscores.html';
+				});
+				$("#logo").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'play.html';
+				});
+				$("#start_the_war").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'play.html';
+				});
+			};
+			function saveUser(data) {
+				if ('localStorage' in window && window['localStorage'] !== null) {
+					try {
+						localStorage.setItem('userObject', JSON.stringify(data));
+						localStorage.setItem('userRole', data.role);
+						localStorage.setItem('userLat', data.lat);
+						localStorage.setItem('userLong', data.lon);
+						localStorage.setItem('userId', data.userId);
+						localStorage.setItem('userBombs', data.bombs);
+						localStorage.setItem('userPoints', data.points);
+						localStorage.setItem('userBullets', data.bullets);
+						localStorage.setItem('userName', data.userName);
+						localStorage.setItem('changedRole', data.changed_role);
+						localStorage.setItem('userCriminalPoints', data.criminal_points);
+						localStorage.setItem('userOfficerPoints', data.officer_points);
+					} catch (e) {
+						if (e == QUOTA_EXCEEDED_ERR) {
+							alert('Quota exceeded!');
+						}
+					}
+				} else {
+					alert('Cannot store user preferences as your browser do not support local storage');
+				}
+			}
+
+			function onOnline() {
+				$('.internet').empty();
+				$(".btn-login").removeAttr("disabled");
+			}
+
+			function onOffline() {
+				$(".btn-login").off("touchstart").attr("disabled", "disabled");
+				$(".button").on('touchstart',function(e) {
+					e.preventDefault();
+					shortToast("Please check your internet connection.");
+				});
+				longToast("Please check your internet connection.");
+			}
+		</script>
+	</head>
+	<body onload="onLoad();">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<div class="container">
+					<ul class="nav">
+						<li class='icon play'>
+							<a class="button" href="#"><img src="../img/start_game.svg" id="start_the_war"></a>
+						</li>
+						<li class='icon logo'>
+							<a class="button" href="#"><img id="logo" src="../img/cityterror.svg"></a>
+						</li>
+						<li class='icon'>
+							<a href="#"><img id="highscores" src="../img/highscores_start.svg"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="login-container">
+			<p class="alert"></p>
+			<p class="internet"></p>
+			<h2>Register to Saloonwars</h2>
+			<form id="register">
+				<input type="text" name="username" placeholder="username" required id="username" />
+				<input type="email" name="email" placeholder="email" required id="email" />
+				<input type="password" name="password" placeholder="password" required id="password" />
+				<input type="password" name="password_confirmation" placeholder="confirm password" required id ="password_confirmation"/>
+				<input type="button" class="btn-login register" value="register" id="registerBtn">
+			</form>
+		</div>
+		<div class="front">
+			<img id="grass" src="../img/grass.svg">
+			<img id="cacti1" src="../img/cacti1.svg">
+			<img id="ground1" src="../img/ground1.svg">
+			<img id="cacti2" src="../img/cacti2.svg">
+			<img id="ground2" src="../img/ground2.svg">
+			<img id="cacti3" src="../img/cacti3.svg">
+			<img id="ground3" src="../img/ground3.svg">
+		</div>
+	</body>
+</html>

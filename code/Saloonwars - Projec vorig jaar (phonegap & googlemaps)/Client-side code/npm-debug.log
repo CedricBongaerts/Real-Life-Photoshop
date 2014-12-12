@@ -1,0 +1,332 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'cordova',
+1 verbose cli   'plugin',
+1 verbose cli   'add',
+1 verbose cli   'https://github.com/mkuklis/phonegap-websocket' ]
+2 info using npm@1.3.21
+3 info using node@v0.10.24
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose cache add [ 'cordova', null ]
+6 verbose cache add name=undefined spec="cordova" args=["cordova",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'cordova',
+7 verbose parsed url   path: 'cordova',
+7 verbose parsed url   href: 'cordova' }
+8 verbose cache add [ 'plugin', null ]
+9 verbose cache add name=undefined spec="plugin" args=["plugin",null]
+10 verbose parsed url { protocol: null,
+10 verbose parsed url   slashes: null,
+10 verbose parsed url   auth: null,
+10 verbose parsed url   host: null,
+10 verbose parsed url   port: null,
+10 verbose parsed url   hostname: null,
+10 verbose parsed url   hash: null,
+10 verbose parsed url   search: null,
+10 verbose parsed url   query: null,
+10 verbose parsed url   pathname: 'plugin',
+10 verbose parsed url   path: 'plugin',
+10 verbose parsed url   href: 'plugin' }
+11 verbose cache add [ 'add', null ]
+12 verbose cache add name=undefined spec="add" args=["add",null]
+13 verbose parsed url { protocol: null,
+13 verbose parsed url   slashes: null,
+13 verbose parsed url   auth: null,
+13 verbose parsed url   host: null,
+13 verbose parsed url   port: null,
+13 verbose parsed url   hostname: null,
+13 verbose parsed url   hash: null,
+13 verbose parsed url   search: null,
+13 verbose parsed url   query: null,
+13 verbose parsed url   pathname: 'add',
+13 verbose parsed url   path: 'add',
+13 verbose parsed url   href: 'add' }
+14 verbose cache add [ 'https://github.com/mkuklis/phonegap-websocket', null ]
+15 verbose cache add name=undefined spec="https://github.com/mkuklis/phonegap-websocket" args=["https://github.com/mkuklis/phonegap-websocket",null]
+16 verbose parsed url { protocol: 'https:',
+16 verbose parsed url   slashes: true,
+16 verbose parsed url   auth: null,
+16 verbose parsed url   host: 'github.com',
+16 verbose parsed url   port: null,
+16 verbose parsed url   hostname: 'github.com',
+16 verbose parsed url   hash: null,
+16 verbose parsed url   search: null,
+16 verbose parsed url   query: null,
+16 verbose parsed url   pathname: '/mkuklis/phonegap-websocket',
+16 verbose parsed url   path: '/mkuklis/phonegap-websocket',
+16 verbose parsed url   href: 'https://github.com/mkuklis/phonegap-websocket' }
+17 silly lockFile a98f2055-cordova cordova
+18 verbose lock cordova C:\Users\Bart\AppData\Roaming\npm-cache\a98f2055-cordova.lock
+19 silly lockFile fd8c7c8e-plugin plugin
+20 verbose lock plugin C:\Users\Bart\AppData\Roaming\npm-cache\fd8c7c8e-plugin.lock
+21 silly lockFile 58d1bbce-add add
+22 verbose lock add C:\Users\Bart\AppData\Roaming\npm-cache\58d1bbce-add.lock
+23 silly lockFile f210045e-b-com-mkuklis-phonegap-websocket https://github.com/mkuklis/phonegap-websocket
+24 verbose lock https://github.com/mkuklis/phonegap-websocket C:\Users\Bart\AppData\Roaming\npm-cache\f210045e-b-com-mkuklis-phonegap-websocket.lock
+25 silly lockFile a98f2055-cordova cordova
+26 silly lockFile a98f2055-cordova cordova
+27 silly lockFile fd8c7c8e-plugin plugin
+28 silly lockFile fd8c7c8e-plugin plugin
+29 verbose addRemoteTarball [ 'https://github.com/mkuklis/phonegap-websocket', null ]
+30 verbose addNamed [ 'cordova', '' ]
+31 verbose addNamed [ null, '*' ]
+32 silly lockFile de8d9fad-cordova cordova@
+33 verbose lock cordova@ C:\Users\Bart\AppData\Roaming\npm-cache\de8d9fad-cordova.lock
+34 verbose addNamed [ 'plugin', '' ]
+35 verbose addNamed [ null, '*' ]
+36 silly lockFile 900dc310-plugin plugin@
+37 verbose lock plugin@ C:\Users\Bart\AppData\Roaming\npm-cache\900dc310-plugin.lock
+38 silly lockFile 58d1bbce-add add
+39 silly lockFile 58d1bbce-add add
+40 silly addNameRange { name: 'cordova', range: '*', hasData: false }
+41 silly addNameRange { name: 'plugin', range: '*', hasData: false }
+42 verbose addNamed [ 'add', '' ]
+43 verbose addNamed [ null, '*' ]
+44 silly lockFile 024f5563-add add@
+45 verbose lock add@ C:\Users\Bart\AppData\Roaming\npm-cache\024f5563-add.lock
+46 info retry fetch attempt 1 at 15:35:15
+47 verbose fetch to= C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\tmp.tgz
+48 silly addNameRange { name: 'add', range: '*', hasData: false }
+49 http GET https://github.com/mkuklis/phonegap-websocket
+50 verbose url raw cordova
+51 verbose url resolving [ 'https://registry.npmjs.org/', './cordova' ]
+52 verbose url resolved https://registry.npmjs.org/cordova
+53 info trying registry request attempt 1 at 15:35:15
+54 verbose etag "AFJGLRYAB4SN5GUMD3O32GFH5"
+55 http GET https://registry.npmjs.org/cordova
+56 verbose url raw plugin
+57 verbose url resolving [ 'https://registry.npmjs.org/', './plugin' ]
+58 verbose url resolved https://registry.npmjs.org/plugin
+59 info trying registry request attempt 1 at 15:35:15
+60 verbose etag "1H2Z9M593CFTQ1Q6JK8C6TF57"
+61 http GET https://registry.npmjs.org/plugin
+62 verbose url raw add
+63 verbose url resolving [ 'https://registry.npmjs.org/', './add' ]
+64 verbose url resolved https://registry.npmjs.org/add
+65 info trying registry request attempt 1 at 15:35:15
+66 verbose etag "9BHAG9J8R8YHPAR0VGZHANECC"
+67 http GET https://registry.npmjs.org/add
+68 http 304 https://registry.npmjs.org/plugin
+69 silly registry.get cb [ 304,
+69 silly registry.get   { date: 'Wed, 22 Jan 2014 14:35:20 GMT',
+69 silly registry.get     server: 'Apache',
+69 silly registry.get     connection: 'Keep-Alive',
+69 silly registry.get     'keep-alive': 'timeout=10, max=50',
+69 silly registry.get     etag: '"1H2Z9M593CFTQ1Q6JK8C6TF57"',
+69 silly registry.get     vary: 'Accept' } ]
+70 verbose etag plugin from cache
+71 http 304 https://registry.npmjs.org/cordova
+72 silly registry.get cb [ 304,
+72 silly registry.get   { date: 'Wed, 22 Jan 2014 14:35:20 GMT',
+72 silly registry.get     server: 'Apache',
+72 silly registry.get     connection: 'Keep-Alive',
+72 silly registry.get     'keep-alive': 'timeout=10, max=50',
+72 silly registry.get     etag: '"AFJGLRYAB4SN5GUMD3O32GFH5"',
+72 silly registry.get     vary: 'Accept' } ]
+73 verbose etag cordova from cache
+74 silly addNameRange number 2 { name: 'plugin', range: '*', hasData: true }
+75 silly addNameRange versions [ 'plugin',
+75 silly addNameRange   [ '0.0.13',
+75 silly addNameRange     '0.0.14',
+75 silly addNameRange     '0.0.15',
+75 silly addNameRange     '0.1.0',
+75 silly addNameRange     '0.2.0',
+75 silly addNameRange     '0.2.1',
+75 silly addNameRange     '0.2.2',
+75 silly addNameRange     '0.2.3',
+75 silly addNameRange     '0.2.4',
+75 silly addNameRange     '0.2.5',
+75 silly addNameRange     '0.2.6',
+75 silly addNameRange     '0.2.7',
+75 silly addNameRange     '0.3.0',
+75 silly addNameRange     '0.3.1',
+75 silly addNameRange     '0.3.2' ] ]
+76 verbose addNamed [ 'plugin', '0.3.2' ]
+77 verbose addNamed [ '0.3.2', '0.3.2' ]
+78 silly lockFile f3325947-plugin-0-3-2 plugin@0.3.2
+79 verbose lock plugin@0.3.2 C:\Users\Bart\AppData\Roaming\npm-cache\f3325947-plugin-0-3-2.lock
+80 silly addNameRange number 2 { name: 'cordova', range: '*', hasData: true }
+81 silly addNameRange versions [ 'cordova',
+81 silly addNameRange   [ '0.0.1',
+81 silly addNameRange     '0.0.2',
+81 silly addNameRange     '0.0.3',
+81 silly addNameRange     '0.0.4',
+81 silly addNameRange     '0.0.5',
+81 silly addNameRange     '0.0.6',
+81 silly addNameRange     '0.0.7',
+81 silly addNameRange     '0.0.8',
+81 silly addNameRange     '0.0.9',
+81 silly addNameRange     '0.1.0',
+81 silly addNameRange     '0.1.1',
+81 silly addNameRange     '0.1.2',
+81 silly addNameRange     '0.1.3',
+81 silly addNameRange     '0.1.4',
+81 silly addNameRange     '0.1.5',
+81 silly addNameRange     '0.1.6',
+81 silly addNameRange     '0.1.7',
+81 silly addNameRange     '0.1.8',
+81 silly addNameRange     '0.1.9',
+81 silly addNameRange     '0.1.10',
+81 silly addNameRange     '0.1.11',
+81 silly addNameRange     '0.1.12',
+81 silly addNameRange     '0.1.13',
+81 silly addNameRange     '0.1.14',
+81 silly addNameRange     '2.2.0',
+81 silly addNameRange     '2.3.0',
+81 silly addNameRange     '2.3.1',
+81 silly addNameRange     '2.3.2',
+81 silly addNameRange     '2.3.3',
+81 silly addNameRange     '2.3.5',
+81 silly addNameRange     '2.3.6',
+81 silly addNameRange     '2.4.0',
+81 silly addNameRange     '2.4.1',
+81 silly addNameRange     '2.4.2',
+81 silly addNameRange     '2.4.3',
+81 silly addNameRange     '2.4.4',
+81 silly addNameRange     '2.4.5',
+81 silly addNameRange     '2.4.6',
+81 silly addNameRange     '2.4.7',
+81 silly addNameRange     '2.4.8',
+81 silly addNameRange     '2.4.9',
+81 silly addNameRange     '2.4.10',
+81 silly addNameRange     '2.5.0',
+81 silly addNameRange     '2.5.2',
+81 silly addNameRange     '2.5.3',
+81 silly addNameRange     '2.5.4',
+81 silly addNameRange     '2.5.5',
+81 silly addNameRange     '2.6.0',
+81 silly addNameRange     '2.6.1',
+81 silly addNameRange     '2.6.2',
+81 silly addNameRange     '2.7.0-rc.1',
+81 silly addNameRange     '2.7.1-rc.1',
+81 silly addNameRange     '2.7.2',
+81 silly addNameRange     '2.7.3',
+81 silly addNameRange     '2.7.4',
+81 silly addNameRange     '2.8.0',
+81 silly addNameRange     '2.8.1',
+81 silly addNameRange     '2.8.2',
+81 silly addNameRange     '2.8.3',
+81 silly addNameRange     '2.8.4',
+81 silly addNameRange     '2.8.5',
+81 silly addNameRange     '2.8.6',
+81 silly addNameRange     '2.8.7',
+81 silly addNameRange     '2.8.8',
+81 silly addNameRange     '2.8.9',
+81 silly addNameRange     '2.8.10',
+81 silly addNameRange     '2.8.11',
+81 silly addNameRange     '2.8.12',
+81 silly addNameRange     '2.8.13',
+81 silly addNameRange     '2.8.14',
+81 silly addNameRange     '2.8.15',
+81 silly addNameRange     '2.8.16',
+81 silly addNameRange     '2.8.17',
+81 silly addNameRange     '2.8.18',
+81 silly addNameRange     '2.8.19',
+81 silly addNameRange     '2.8.20',
+81 silly addNameRange     '2.8.21',
+81 silly addNameRange     '2.8.22',
+81 silly addNameRange     '2.8.23',
+81 silly addNameRange     '2.8.24',
+81 silly addNameRange     '2.8.25',
+81 silly addNameRange     '2.9.0',
+81 silly addNameRange     '2.9.1',
+81 silly addNameRange     '2.9.2',
+81 silly addNameRange     '2.9.3',
+81 silly addNameRange     '2.9.4',
+81 silly addNameRange     '2.9.5',
+81 silly addNameRange     '2.9.6',
+81 silly addNameRange     '2.9.7',
+81 silly addNameRange     '3.0.0-rc1',
+81 silly addNameRange     '3.0.0-rc1-1',
+81 silly addNameRange     '3.0.0-rc1-3',
+81 silly addNameRange     '3.0.0',
+81 silly addNameRange     '3.0.1',
+81 silly addNameRange     '3.0.2',
+81 silly addNameRange     '3.0.3',
+81 silly addNameRange     '3.0.4',
+81 silly addNameRange     '3.0.5',
+81 silly addNameRange     '3.0.6',
+81 silly addNameRange     '3.0.7',
+81 silly addNameRange     '3.0.8',
+81 silly addNameRange     '3.0.9',
+81 silly addNameRange     '3.0.10',
+81 silly addNameRange     '3.1.0-0.1.0',
+81 silly addNameRange     '3.1.0-0.2.0',
+81 silly addNameRange     '3.2.0-rc.1',
+81 silly addNameRange     '3.2.0-0.1.0',
+81 silly addNameRange     '3.2.0-0.2.0',
+81 silly addNameRange     '3.2.0-0.3.0',
+81 silly addNameRange     '3.2.0-0.4.0',
+81 silly addNameRange     '3.3.0-rc.1',
+81 silly addNameRange     '3.3.0-0.1.0',
+81 silly addNameRange     '3.3.0-0.1.1',
+81 silly addNameRange     '3.3.1-0.1.2',
+81 silly addNameRange     '2.9.0-rc1' ] ]
+82 verbose addNamed [ 'cordova', '3.3.1-0.1.2' ]
+83 verbose addNamed [ '3.3.1-0.1.2', '3.3.1-0.1.2' ]
+84 silly lockFile 1b993bc5-cordova-3-3-1-0-1-2 cordova@3.3.1-0.1.2
+85 verbose lock cordova@3.3.1-0.1.2 C:\Users\Bart\AppData\Roaming\npm-cache\1b993bc5-cordova-3-3-1-0-1-2.lock
+86 silly lockFile f3325947-plugin-0-3-2 plugin@0.3.2
+87 silly lockFile f3325947-plugin-0-3-2 plugin@0.3.2
+88 silly lockFile 900dc310-plugin plugin@
+89 silly lockFile 900dc310-plugin plugin@
+90 silly lockFile 1b993bc5-cordova-3-3-1-0-1-2 cordova@3.3.1-0.1.2
+91 silly lockFile 1b993bc5-cordova-3-3-1-0-1-2 cordova@3.3.1-0.1.2
+92 silly lockFile de8d9fad-cordova cordova@
+93 silly lockFile de8d9fad-cordova cordova@
+94 http 304 https://registry.npmjs.org/add
+95 silly registry.get cb [ 304,
+95 silly registry.get   { date: 'Wed, 22 Jan 2014 14:35:20 GMT',
+95 silly registry.get     server: 'Apache',
+95 silly registry.get     connection: 'Keep-Alive',
+95 silly registry.get     'keep-alive': 'timeout=10, max=50',
+95 silly registry.get     etag: '"9BHAG9J8R8YHPAR0VGZHANECC"',
+95 silly registry.get     vary: 'Accept' } ]
+96 verbose etag add from cache
+97 silly addNameRange number 2 { name: 'add', range: '*', hasData: true }
+98 silly addNameRange versions [ 'add', [ '1.0.0' ] ]
+99 verbose addNamed [ 'add', '1.0.0' ]
+100 verbose addNamed [ '1.0.0', '1.0.0' ]
+101 silly lockFile 30480431-add-1-0-0 add@1.0.0
+102 verbose lock add@1.0.0 C:\Users\Bart\AppData\Roaming\npm-cache\30480431-add-1-0-0.lock
+103 silly lockFile 30480431-add-1-0-0 add@1.0.0
+104 silly lockFile 30480431-add-1-0-0 add@1.0.0
+105 silly lockFile 024f5563-add add@
+106 silly lockFile 024f5563-add add@
+107 http 200 https://github.com/mkuklis/phonegap-websocket
+108 verbose tar unpack C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\tmp.tgz
+109 silly lockFile 26fdf877-15810-0-7060463225934654-package tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\package
+110 verbose lock tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\package C:\Users\Bart\AppData\Roaming\npm-cache\26fdf877-15810-0-7060463225934654-package.lock
+111 silly lockFile 8856ed82-15810-0-7060463225934654-tmp-tgz tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\tmp.tgz
+112 verbose lock tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\tmp.tgz C:\Users\Bart\AppData\Roaming\npm-cache\8856ed82-15810-0-7060463225934654-tmp-tgz.lock
+113 silly gunzTarPerm modes [ '755', '644' ]
+114 error not a package C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\tmp.tgz
+115 silly lockFile 26fdf877-15810-0-7060463225934654-package tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\package
+116 silly lockFile 26fdf877-15810-0-7060463225934654-package tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\package
+117 silly lockFile 8856ed82-15810-0-7060463225934654-tmp-tgz tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\tmp.tgz
+118 silly lockFile 8856ed82-15810-0-7060463225934654-tmp-tgz tar://C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\tmp.tgz
+119 silly lockFile f210045e-b-com-mkuklis-phonegap-websocket https://github.com/mkuklis/phonegap-websocket
+120 silly lockFile f210045e-b-com-mkuklis-phonegap-websocket https://github.com/mkuklis/phonegap-websocket
+121 error Error: ENOENT, open 'C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\package\package.json'
+122 error If you need help, you may report this *entire* log,
+122 error including the npm and node versions, at:
+122 error     <http://github.com/isaacs/npm/issues>
+123 error System Windows_NT 6.1.7601
+124 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "cordova" "plugin" "add" "https://github.com/mkuklis/phonegap-websocket"
+125 error cwd D:\MCT3\Web UX\Saloonwars\Saloonwars
+126 error node -v v0.10.24
+127 error npm -v 1.3.21
+128 error path C:\Users\Bart\AppData\Local\Temp\npm-6840-g9S1r5KO\1390401315810-0.7060463225934654\package\package.json
+129 error code ENOENT
+130 error errno 34
+131 verbose exit [ 34, true ]

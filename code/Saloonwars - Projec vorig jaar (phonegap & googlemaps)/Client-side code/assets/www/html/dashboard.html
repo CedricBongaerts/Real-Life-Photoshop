@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300' rel='stylesheet' type='../text/css'>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+		<script src="../js/date.js"></script>
+		<script src="../cordova.js"></script>
+		<script src="../js/toast.js"></script>
+		<title>Saloonwars</title>
+	</head>
+
+	<script>
+		var message = "This will disable the feature for 24 hours.";
+		var title = "Change role";
+
+		//The first element of this list is the label for positive
+		//confirmation i.e. Yes, OK, Proceed.
+		var buttonLabels = "Ok , Cancel";
+
+		var callback = function(yes) {
+			if (yes) {
+				changeRole();
+			} else {
+				checkRole();
+			}
+		};
+
+		function onLoad() {
+			document.addEventListener("online", onOnline, false);
+			document.addEventListener("offline", onOffline, false);
+			document.addEventListener("deviceready", onDeviceReady, true);
+		}
+
+		function onDeviceReady() {
+			if (localStorage.length != 0) {
+				var user = localStorage.getItem('userObject');
+				var userRole = localStorage.getItem('userRole');
+				var userObject = JSON.parse(user);
+				$('.userId').val(userObject.userId);
+				checkRole();
+				$('.username').append(userObject.userName);
+				$('.email').append(userObject.email);
+				$('.lat').append(localStorage.getItem('userLat'));
+				$('.lon').append(localStorage.getItem('userLong'));
+				$('.officerScore').append(localStorage.getItem('userOfficerPoints'));
+				$('.bullets').append(localStorage.getItem('userBullets'));
+				$('.criminalScore').append(localStorage.getItem('userCriminalPoints'));
+				$('.bombs').append(localStorage.getItem('userBombs'));
+				$('#role').prop('disabled', 'disabled');
+				$('#roleBtn').attr('hidden', 'hidden');
+				if (userRole == 1) {
+					$("#role").val(1);
+				} else {
+					$("#role").val(0);
+				}
+
+				$("#roleBtn").on('touchstart', function(e) {
+					e.preventDefault();
+					showConfirm(message, callback, buttonLabels, title);
+				});
+				$('#logoutBtn').on('touchstart', function(e) {
+					window.location.href = "../index.html";
+					$('.alert').empty();
+					localStorage.clear();
+					shortToast('You are now logged out');
+					e.preventDefault();
+					$.ajax({
+						url : 'http://saloonwars.eu1.frbit.net/user/logout',
+						type : 'post',
+						dataType : 'json',
+						data : $('#logoutFrm').serialize(),
+						success : function(data) {
+						},
+						error : function(xhr, ajaxOptions, thrownError) {
+							$(".alert").append(xhr.responseText);
+						}
+					});
+					return false;
+				});
+			} else {
+				window.location.href = "../index.html";
+				shortToast('Please login');
+			}
+			$("#highscores").on('touchstart', function(e) {
+				e.preventDefault();
+				window.location.href = 'highscores.html';
+			});
+			$("#start_the_war").on('touchstart', function(e) {
+				e.preventDefault();
+				window.location.href = 'play.html';
+			});
+			$("#logo").on('touchstart', function(e) {
+				e.preventDefault();
+				window.location.href = 'play.html';
+			});
+		};
+
+		function showConfirm(message, callback, buttonLabels, title) {
+
+			//Set default values if not specified by the user.
+			buttonLabels = buttonLabels || 'OK,Cancel';
+
+			title = title || "Change role";
+
+			//Use Cordova version of the confirm box if possible.
+			if (navigator.notification && navigator.notification.confirm) {
+
+				var _callback = function(index) {
+					if (callback) {
+						callback(index == 1);
+					}
+				};
+
+				navigator.notification.confirm(message, // message
+				_callback, // callback
+				title, // title
+				buttonLabels // buttonName
+				);
+
+				//Default to the usual JS confirm method.
+			} else {
+				invoke(callback, confirm(message));
+			}
+		}
+
+		function onOnline() {
+			$('.alert').empty();
+			$(".btn-login").removeAttr("disabled");
+		}
+
+		function onOffline() {
+			shortToast("Please check your internet connection.");
+			$(".btn-login").off("touchstart").attr("disabled", "disabled");
+		}
+
+		function changeRole() {
+			$.ajax({
+				url : 'http://saloonwars.eu1.frbit.net/user/role',
+				type : 'post',
+				dataType : 'json',
+				data : $('#roleFrm').serialize(),
+				success : function(data) {
+					shortToast("Your settings are saved");
+					var newRole = $("#role").val();
+					localStorage.setItem('userRole', newRole);
+					$('#role').prop('disabled', 'disabled');
+					$('#roleBtn').attr('hidden', 'hidden');
+				},
+				error : function(xhr, ajaxOptions, thrownError) {
+					$(".alert").append(xhr.responseText);
+				}
+			});
+		}
+
+		function checkRole() {
+			$.ajax({
+				url : 'http://saloonwars.eu1.frbit.net/user/changed',
+				type : 'post',
+				dataType : 'json',
+				data : $('#changedFrm').serialize(),
+				success : function(data) {
+					if (Date.parse(data.changedRole) >= (24).hours().ago()) {
+						// disable select
+						// less then 48 hours ago changed
+						$('#role').prop('disabled', 'disabled');
+						$('#roleBtn').attr('hidden', 'hidden');
+					} else {
+						// enable select
+						// more then 48 hours ago
+						$('#role').prop('disabled', false);
+						$('#roleBtn').attr('hidden', false);
+					}
+				},
+				error : function(xhr, ajaxOptions, thrownError) {
+					$('.alert').text(xhr.responseText);
+				}
+			});
+		}
+
+	</script>
+	<body onload="onLoad();">
+		<div class="navbar home">
+			<div class="navbar-inner">
+				<div class="container">
+					<ul class="nav">
+						<li class='icon logo'>
+							<a href="#" class="button"><img id="logo" src="../img/cityterror.svg"></a>
+						</li>
+						<li class='icon play'>
+							<a href="#" class="button"><img id="start_the_war" src="../img/start_game.svg"></a>
+						</li>
+						<li class='icon'>
+							<a href="#" class="button"><img id="highscores" src="../img/highscores_start.svg"></a>
+						</li>
+						<li class='icon play'>
+							<form id="logoutFrm">
+								<input type="hidden" name="userId" class="userId" />
+								<a href="#" id="logoutBtn" class="button"><img src="../img/logout.svg"></a>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="login-container">
+			<p class="alert"></p>
+			<div class="admin">
+				<h1>Saloonwars</h1>
+				<ul class="account-info">
+					<li>
+						<h2>Account Information</h2>
+					</li>
+					<li class="username">
+						Username:
+					</li>
+					<li	class="email">
+						Email:
+					</li>
+					<li>
+						<h2>Game Information</h2>
+					</li>
+					<li class="criminalScore">
+						Criminal's Score:
+					</li>
+					<li class="officerScore">
+						Officer's Score:
+					</li>
+					<li	class="bombs">
+						Bombs:
+					</li>
+					<li	class="bullets">
+						Bullets:
+					</li>
+					<form id="roleFrm">
+						<input type="hidden" name="userId" class="userId" />
+						<li>
+							Role:
+							<select id="role" name="role">
+								<option value="0">Criminal</option>
+								<option value="1">Officer</option>
+							</select>
+						</li>
+						<li>
+							<input type="submit" class="btn-login role" value="change role" id="roleBtn">
+						</li>
+					</form>
+					<form id="changedFrm">
+						<input type="hidden" name="userId" class="userId" />
+					</form>
+				</ul>
+			</div>
+		</div>
+		<div class="front">
+			<img id="grass" src="../img/grass.svg">
+			<img id="cacti1" src="../img/cacti1.svg">
+			<img id="ground1" src="../img/ground1.svg">
+			<img id="cacti2" src="../img/cacti2.svg">
+			<img id="ground2" src="../img/ground2.svg">
+			<img id="cacti3" src="../img/cacti3.svg">
+			<img id="ground3" src="../img/ground3.svg">
+		</div>
+	</body>
+</html>

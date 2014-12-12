@@ -1,0 +1,948 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Saloonwars</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+	</head>
+	<body onload="onLoad();">
+		<div class="navbar home">
+			<div class="navbar-inner">
+				<div class="container">
+					<ul class="nav">
+						<li class='icon logo'>
+							<a href="#"><img id="logo" src="../img/cityterror.svg"></a>
+						</li>
+						<li class='icon play'>
+							<a href="#"><img src="../img/account.svg" id="account"></a>
+						</li>
+						<li class='icon'>
+							<a href="#"><img id="highscores" src="../img/highscores_start.svg" id="highscores"></a>
+						</li>
+						<li class='icon play'>
+							<form id="logoutFrm">
+								<input type="hidden" name="userId" class="userId" />
+								<a href="#" id="logoutBtn"><img src="../img/logout.svg"></a>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="content">
+				<ul class="game-info">
+					<li class="iconInvent"><img src="../img/score-inventory.svg" id="points"/>x <span id="score"></span>
+					</li>
+					<form id="lat-long">
+						<input type="hidden" name="lat" id="lat" placeholder="latitude" />
+						<input type="hidden" name="long" id="long" placeholder="longitude" />
+						<input type="hidden" name="userId" id="userIdStore" class="userId" />
+					</form>
+					<form id="bomb-pick-up">
+						<input type="hidden" name="userId" class="userId" />
+						<input type="hidden" name="placeId" id="placeId" />
+					</form>
+					<form id="user-id">
+						<input type="hidden" name="userId" class="userId" />
+						<input type="hidden" name="buildingPoints" class="buildingPoints" />
+						<input type="hidden" name="bombsNeeded" class="bombsNeeded" />
+					</form>
+					<form id="criminal-id">
+						<input type="hidden" name="userId" class="userId" />
+						<input type="hidden" name="criminalId" class="criminalId" />
+						<input type="hidden" name="scoreIfShot" class="scoreIfShot" />
+					</form>
+					<form id="shot-id">
+						<input type="hidden" name="userId" class="userId" />
+					</form>
+					<li id="bombsContainer" class="iconInvent"><img src="../img/bomb-inventory.svg" id="bomb"/>x <span id="bombs"></span>
+					</li>
+					<li id="bulletsContainer" class="iconInvent"><img src="../img/bullet-inventory.svg" id="bullet"/>x <span id="bullets"></span>
+					</li>
+					<li id="message"></li>
+				</ul>
+				<div id="map_canvas"></div>
+			</div>
+		</div>
+		<script src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=true"></script>
+		<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="../js/date.js"></script>
+		<script src="../cordova.js"></script>
+		<script src="../js/brain-socket.min.js"></script>
+		<script src="../js/toast.js"></script>
+		<script>
+			// array of users
+			var users = [];
+			var userMarkers = [];
+			// websockets
+			window.app = {};
+
+			app.BrainSocket = new BrainSocket(new WebSocket('ws://146.185.135.165:8080'), new BrainSocketPubSub());
+
+			app.BrainSocket.Event.listen('generic.event', function(data) {
+				// if the user is not the user itself
+				if (data.client.data.userId != localStorage.getItem('userId')) {
+					// put all the data in an array
+					if (users.length == 0) {
+						setUser(data);
+					} else {
+						for (index in users) {
+							// the user exists, update the object
+							if ($.inArray(users[index].id, users)) {
+								updateUser(users[index], data);
+							}
+							// the user does not exist yet
+							else {
+								setUser(data);
+							}
+						}
+					}
+				}
+			});
+
+			app.BrainSocket.Event.listen('shoot.event', function(data) {
+				console.log(data);
+				if (data.client.data.id !== localStorage.getItem('userId') && data.client.data.targetId == localStorage.getItem('userId')) {
+					alertCriminal(data);
+				}
+
+			});
+
+			app.BrainSocket.Event.listen('app.success', function(data) {
+				console.log(data);
+			});
+
+			app.BrainSocket.Event.listen('app.error', function(data) {
+				console.log(data);
+			});
+
+			var markers = [], users = [], map, userLocation, userRadius, mapCenter = new google.maps.LatLng(localStorage.getItem('userLat'), localStorage.getItem('userLong'));
+			var userRole = localStorage.getItem('userRole');
+			var user = localStorage.getItem('userObject');
+			var userObject = JSON.parse(user);
+			var bombsCriminal = localStorage.getItem('userBombs');
+			var bulletssOfficer = localStorage.getItem('userBullets');
+			var bombsDb = [];
+			var bulletsDb = [];
+			var userPosition;
+
+			// remove points of interest
+			var styles = [{
+				"stylers" : [{
+					"hue" : "#cc9933"
+				}, {
+					"saturation" : 70
+				}, {
+					"gamma" : 0.74
+				}]
+			}, {
+				"featureType" : "poi",
+				"elementType" : "labels",
+				"stylers" : [{
+					"visibility" : "off"
+				}]
+			}, {
+				"featureType" : "transit.station",
+				"elementType" : "labels",
+				"stylers" : [{
+					"visibility" : "off"
+				}]
+			}, {
+				"featureType" : "landscape.man_made",
+				"elementType" : "labels",
+				"stylers" : [{
+					"visibility" : "off"
+				}]
+			}, {
+				"featureType" : "water",
+				"stylers" : [{
+					"hue" : "#3399ff"
+				}]
+			}, {
+				"featureType" : "road.highway",
+				"stylers" : [{
+					"hue" : "#ffcc00"
+				}]
+			}, {
+				"featureType" : "road.highway",
+				"elementType" : "labels",
+				"stylers" : [{
+					"visibility" : "off"
+				}]
+			}];
+
+			function getBombs() {
+				$.ajax({
+					type : 'POST',
+					url : 'http://saloonwars.eu1.frbit.net/game/bombs',
+					data : $('#user-id').serialize(),
+					success : function(data) {
+						console.log(data);
+						bombsDb = data.bombs;
+						return bombsDb;
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						console.log(xhr.responseText);
+					}
+				});
+			}
+
+			function getBullets() {
+				$.ajax({
+					type : 'POST',
+					url : 'http://saloonwars.eu1.frbit.net/game/bullets',
+					data : $('#user-id').serialize(),
+					success : function(data) {
+						console.log(data);
+						bulletsDb = data.bullets;
+						return bulletsDb;
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						console.log(xhr.responseText);
+					}
+				});
+			}
+
+			function initializeMap() {
+				map = new google.maps.Map(document.getElementById('map_canvas'), {
+					zoom : 17,
+					center : mapCenter,
+					mapTypeId : google.maps.MapTypeId.ROADMAP,
+					panControl : false,
+					zoomControl : false,
+					mapTypeControl : false,
+					scaleControl : false,
+					streetViewControl : false,
+					overviewMapControl : false,
+					styles : styles
+				});
+			}
+
+			function locError(error) {
+				// the current position could not be located
+				alert("The current position could not be found!");
+			}
+
+			function setUserLocation(pos) {
+				// set location with websockets
+				app.BrainSocket.message('generic.event', {
+					'latitude' : pos.coords.latitude,
+					'longitude' : pos.coords.longitude,
+					'userId' : localStorage.getItem('userId'),
+					'role' : localStorage.getItem('userRole'),
+					'userName' : userObject.userName,
+					'points' : localStorage.getItem('userPoints'),
+					'userCriminalPoints' : localStorage.getItem('userCriminalPoints'),
+					'userOfficerPoints' : localStorage.getItem('userOfficerPoints')
+				});
+				// marker for userLocation
+				userLocation = new google.maps.Marker({
+					map : map,
+					position : new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+					title : "You are here",
+					icon : "../img/user-location.svg",
+				});
+				// radius for userLocation
+				userRadius = new google.maps.Circle({
+					map : map,
+					radius : 50,
+					strokeWeight : 0,
+					strokeOpacity : 0.4,
+					strokeColor : "#000",
+					fillOpacity : 0.4,
+					fillColor : '#FFF'
+				});
+				// bind radius to userLocation
+				userRadius.bindTo('center', userLocation, 'position');
+				// scroll to userLocation
+				map.panTo(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+			}
+
+			function displayAndWatch(position) {
+				// set current position
+				setUserLocation(position);
+				// watch position
+				watchCurrentPosition();
+				// store user location
+				storeUserLocation(position);
+				// call the functions the first time and then set a timer
+				// set places
+				setPlaces(position);
+				setInterval(function() {
+					// set places every 15 seonds with the new coordinates
+					setPlaces(userPosition);
+				}, 15000);
+
+			}
+
+			function storeUserLocation(position) {
+				// store user location in database
+				$latitude = position.coords.latitude;
+				$longitude = position.coords.longitude;
+				$userId = localStorage.getItem('userId');
+				$("#lat").val($latitude);
+				$("#long").val($longitude);
+				$("#userIdStore").val($userId);
+				$.ajax({
+					type : 'POST',
+					url : 'http://saloonwars.eu1.frbit.net/game/lat-long',
+					data : $('#lat-long').serialize(),
+					success : function(data) {
+						localStorage.setItem('userLat', data.lat);
+						localStorage.setItem('userLong', data.long);
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						console.log(xhr.responseText);
+					}
+				});
+			}
+
+			function watchCurrentPosition() {
+				var positionTimer = navigator.geolocation.watchPosition(function(position) {
+					// set location with websockets to other users
+					app.BrainSocket.message('generic.event', {
+						'latitude' : position.coords.latitude,
+						'longitude' : position.coords.longitude,
+						'userId' : localStorage.getItem('userId'),
+						'role' : localStorage.getItem('userRole'),
+						'userName' : userObject.userName,
+						'points' : localStorage.getItem('userPoints'),
+						'userCriminalPoints' : localStorage.getItem('userCriminalPoints'),
+						'userOfficerPoints' : localStorage.getItem('userOfficerPoints')
+					});
+					setMarkerPosition(userLocation, userRadius, position);
+					userPosition = position;
+					map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+					return userPosition;
+				});
+			}
+
+			function setMarkerPosition(marker, radius, position) {
+				marker.setPosition(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+				radius.bindTo('center', marker, 'position');
+				console.log(position);
+			}
+
+			function setPlaces(position) {
+				setAllMap(null);
+				markers = [];
+				var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+				// lookup locations to set bombs and buildings
+				var buildingsRequest = {
+					location : geolocate,
+					radius : 1000,
+					types : ['cafe', 'restaurant', 'bank', 'gas_station', 'museum', 'church', 'police', 'hospital', 'stadium', 'airport']
+				};
+				var bombsRequest = {
+					location : geolocate,
+					radius : 500,
+					types : ['train_station', 'bus_station'] //train_station (for development)
+				};
+				var bulletsRequest = {
+					location : geolocate,
+					radius : 500,
+					types : ['train_station', 'bus_station'] //train_station (for development)
+				};
+				// if the user is a criminal
+				if (userRole == 0) {
+					// add bombs to the map
+					service = new google.maps.places.PlacesService(map);
+					service.nearbySearch(buildingsRequest, buildingsCallback);
+
+					service = new google.maps.places.PlacesService(map);
+					service.nearbySearch(bombsRequest, bombsCallback);
+				}
+				// if the user is an officer
+				else if (userRole == 1) {
+					// add bullets to the map
+					service = new google.maps.places.PlacesService(map);
+					service.nearbySearch(bulletsRequest, bulletsCallback);
+				}
+			}
+
+			function buildingsCallback(results, status) {
+				if (status == google.maps.places.PlacesServiceStatus.OK) {
+					// get all buildings and create marker
+					for (index in results) {
+						for (types in results[index].types) {
+							var type = results[index].types[types];
+							var bombsNeeded;
+							var iconLocation;
+							var extraPoints;
+							switch(type) {
+								case "cafe":
+									iconLocation = "../img/bombable-location.svg";
+									bombsNeeded = 10;
+									extraPoints = 100;
+									break;
+								case "restaurant":
+									iconLocation = "../img/restaurant-location.svg";
+									bombsNeeded = 20;
+									extraPoints = 250;
+									break;
+								case "bank":
+									iconLocation = "../img/bank-location.svg";
+									bombsNeeded = 30;
+									extraPoints = 500;
+									break;
+								case "gas_station":
+									iconLocation = "../img/gas-station-location.svg";
+									bombsNeeded = 40;
+									extraPoints = 1000;
+									break;
+								case "museum":
+									iconLocation = "../img/museum-location.svg";
+									bombsNeeded = 50;
+									extraPoints = 2000;
+									break;
+								case "church":
+									iconLocation = "../img/church-location.svg";
+									bombsNeeded = 60;
+									extraPoints = 3000;
+									break;
+								case "police":
+									iconLocation = "../img/police-location.svg";
+									bombsNeeded = 70;
+									extraPoints = 4000;
+									break;
+								case "hospital":
+									iconLocation = "../img/hospital-location.svg";
+									bombsNeeded = 80;
+									extraPoints = 5000;
+									break;
+								case "stadium":
+									iconLocation = "../img/stadium-location.svg";
+									bombsNeeded = 90;
+									extraPoints = 7500;
+									break;
+								case "airport":
+									iconLocation = "../img/airport-location.svg";
+									bombsNeeded = 100;
+									extraPoints = 10000;
+									break;
+							}
+						}
+						var marker = new google.maps.Marker({
+							position : new google.maps.LatLng(results[index].geometry.location.d, results[index].geometry.location.e),
+							map : map,
+							title : results[index].name,
+							icon : iconLocation,
+							value : bombsNeeded,
+							points : extraPoints
+						});
+						// if user clicks on a building
+						google.maps.event.addListener(marker, 'click', (function(marker, index) {
+							return function() {
+								// and the marker is in the user's range
+								if (userRadius.getBounds().contains(marker.getPosition())) {
+									// and the user has 10 bombs or more
+									if (bombsCriminal >= marker.value) {
+										// blow up the building
+										$(".buildingPoints").val(marker.points);
+										$(".bombsNeeded").val(marker.value);
+										$.ajax({
+											type : 'POST',
+											url : 'http://saloonwars.eu1.frbit.net/game/explode',
+											data : $('#user-id').serialize(),
+											success : function(data) {
+												// update inventory
+												navigator.notification.vibrate(1000);
+												var randomNumber = Math.floor((Math.random() * 5) + 1);
+												var message;
+												switch(randomNumber) {
+													case 1:
+														message = "Bye bye, " + marker.title + "!";
+														break;
+													case 2:
+														message = "No " + marker.title + " anymore!";
+														break;
+													case 3:
+														message = "Taste my nitroglycerin, " + marker.title + "!";
+														break;
+													case 4:
+														message = "Hasta la vista " + marker.title + "!";
+														break;
+													case 5:
+														message = marker.title + " is no longer.";
+														break;
+												}
+												shortToast(message);
+												$("#score").text(data.points);
+												localStorage.setItem('userCriminalPoints', data.points);
+												$("#bombs").text(data.bombs);
+												bombsCriminal = data.bombs;
+											},
+											error : function(xhr, ajaxOptions, thrownError) {
+												console.log(xhr.responseText);
+											}
+										});
+									}
+									// the user doesn't have enough bombs
+									else {
+										var bombsRemaining = marker.value - bombsCriminal;
+										shortToast('Gather ' + bombsRemaining + ' extra bombs to blow up ' + marker.title + ' !');
+									}
+								}
+								// the user is not in the range of the building
+								else {
+									shortToast('Get in 50 meters of ' + marker.title + ' to blow it up!');
+								}
+							};
+						})(marker, index));
+						markers.push(marker);
+					}
+				}
+			}
+
+			function bombsCallback(bombs, status) {
+				if (status == google.maps.places.PlacesServiceStatus.OK) {
+					// get bombs from google places and create marker
+					for (var i = 0; i < bombs.length; i++) {
+						var marker = new google.maps.Marker({
+							position : new google.maps.LatLng(bombs[i].geometry.location.d, bombs[i].geometry.location.e),
+							map : map,
+							title : bombs[i].name,
+							icon : '../img/bomb-location.svg'
+						});
+						// add marker for bombs
+						google.maps.event.addListener(marker, 'click', (function(marker, i) {
+							return function() {
+								// if the bomb is in the range of the user
+								if (userRadius.getBounds().contains(marker.getPosition())) {
+									// pick 'm up'
+									$("#placeId").val(bombs[i].id);
+									$placeId = bombs[i].id;
+									marker.setMap(null);
+									$.ajax({
+										type : 'POST',
+										url : 'http://saloonwars.eu1.frbit.net/game/bomb-pick-up',
+										data : $('#bomb-pick-up').serialize(),
+										success : function(data) {
+											$("#bombs").text(data.numberOfBombs);
+											localStorage.setItem('userBombs', data.numberOfBombs);
+											bombsCriminal = data.numberOfBombs;
+											shortToast('You got one extra bomb!');
+											bombsDb = data.bombs;
+										},
+										error : function(xhr, ajaxOptions, thrownError) {
+											console.log(xhr.responseText);
+										}
+									});
+								}
+								// the user is not in the range of the bomb
+								else {
+									shortToast("Get in 50 meters of the bomb to pick 'm up!");
+								}
+							};
+						})(marker, i));
+						markers.push(marker);
+						// get all the bombs from the database
+						for (var j = 0; j < bombsDb.length; j++) {
+							// if bomb is already picked up in the last 24 hours - do not show
+							if (bombs[i].id === bombsDb[j].placeId && Date.parse(bombsDb[j].created_at) > (24).hours().ago()) {
+								marker.setMap(null);
+							}
+						}
+					}
+				}
+			}
+
+			function bulletsCallback(bullets, status) {
+				if (status == google.maps.places.PlacesServiceStatus.OK) {
+					// get bullets from the database
+					for (var i = 0; i < bullets.length; i++) {
+						var marker = new google.maps.Marker({
+							position : new google.maps.LatLng(bullets[i].geometry.location.d, bullets[i].geometry.location.e),
+							map : map,
+							title : bullets[i].name,
+							icon : '../img/bullet-location.svg'
+						});
+						// add marker for bullets
+						google.maps.event.addListener(marker, 'click', (function(marker, i) {
+							return function() {
+								// if the bullet is in the range of the user
+								if (userRadius.getBounds().contains(marker.getPosition())) {
+									// pick 'm up'
+									$("#placeId").val(bullets[i].id);
+									$placeId = bullets[i].id;
+									$.ajax({
+										type : 'POST',
+										url : 'http://saloonwars.eu1.frbit.net/game/bullet-pick-up',
+										data : $('#bomb-pick-up').serialize(),
+										success : function(data) {
+											marker.setMap(null);
+											$("#bullets").text(data.numberOfBullets);
+											localStorage.setItem('userBullets', data.numberOfBullets);
+											shortToast('You got one extra bullet!');
+											bulletsDb = data.bullets;
+										},
+										error : function(xhr, ajaxOptions, thrownError) {
+											console.log(xhr.responseText);
+										}
+									});
+								}
+								// the user is not in the range of the bullet
+								else {
+									shortToast("Get in 50 meters of the bullet to pick 'm up!");
+								}
+							};
+						})(marker, i));
+						markers.push(marker);
+						// get all the bullets from the database
+						for (var j = 0; j < bulletsDb.length; j++) {
+							// if bomb is already picked up in the last 24 hours - do not show
+							if (bullets[i].id === bulletsDb[j].placeId && Date.parse(bulletsDb[j].created_at) > (24).hours().ago()) {
+								marker.setMap(null);
+							}
+						}
+					}
+				}
+			}
+
+			function setUser(data) {
+				// if the user is a criminal
+				if (data.client.data.role == 0) {
+					var criminalPoints = data.client.data.userCriminalPoints;
+					var criminalRank;
+					var rankIcon;
+					var scoreIfShot;
+					if (criminalPoints < 1000) {
+						criminalRank = "thief";
+						rankIcon = '../img/thief-location.svg';
+						scoreIfShot = 100;
+
+					} else if (criminalPoints >= 1000 && criminalPoints < 5000) {
+						criminalRank = "thug";
+						rankIcon = '../img/thug-location.svg';
+						scoreIfShot = 250;
+
+					} else if (criminalPoints >= 5000 && criminalPoints < 10000) {
+						criminalRank = "enforcer";
+						rankIcon = '../img/enforcer-location.svg';
+						scoreIfShot = 500;
+
+					} else if (criminalPoints >= 10000 && criminalPoints < 20000) {
+						criminalRank = "henchman";
+						rankIcon = '../img/henchman-location.svg';
+						scoreIfShot = 1000;
+
+					} else if (criminalPoints >= 20000 && criminalPoints < 50000) {
+						criminalRank = "warhead";
+						rankIcon = '../img/warhead-location.svg';
+						scoreIfShot = 2500;
+
+					} else if (criminalPoints >= 50000 && criminalPoints < 100000) {
+						criminalRank = "villan";
+						rankIcon = '../img/villan-location.svg';
+						scoreIfShot = 5000;
+
+					} else if (criminalPoints >= 100000 && criminalPoints < 200000) {
+						criminalRank = "assasin";
+						rankIcon = '../img/assasin-location.svg';
+						scoreIfShot = 10000;
+
+					} else if (criminalPoints >= 200000 && criminalPoints < 500000) {
+						criminalRank = "criminal mastermind";
+						rankIcon = '../img/criminal-mastermind-location.svg';
+						scoreIfShot = 20000;
+
+					} else if (criminalPoints >= 500000 && criminalPoints < 1000000) {
+						criminalRank = "legendary crimelord";
+						rankIcon = '../img/legendary-crimelord-location.svg';
+						scoreIfShot = 50000;
+
+					} else if (criminalPoints >= 1000000) {
+						criminalRank = "wargod";
+						rankIcon = '../img/wargod-location.svg';
+						scoreIfShot = 100000;
+
+					}
+					else{
+						criminalRank = "criminal";
+						rankIcon = "../img/criminal-location.svg";
+						scoreIfShot = 0;
+					}
+					//set markers at the criminal's location
+					var criminal = new google.maps.Marker({
+						map : map,
+						position : new google.maps.LatLng(data.client.data.latitude, data.client.data.longitude),
+						title : data.client.data.userName,
+						id : data.client.data.userId,
+						icon : rankIcon,
+						rank : criminalRank,
+						shotPoints : scoreIfShot
+					});
+					google.maps.event.addListener(criminal, 'click', (function(criminal) {
+						return function() {
+							if ((localStorage.getItem('userRole')) == 0) {
+								shortToast("It's " + criminal.rank + " " + data.client.data.userName + "!");
+							} else if ((localStorage.getItem('userRole')) == 1) {
+								if (userRadius.getBounds().contains(criminal.getPosition())) {
+									if (localStorage.getItem('userBullets') >= 1) {
+										$('.criminalId').val(data.client.data.userId);
+										$('.scoreIfShot').val(criminal.shotPoints);
+										// blow up the user
+										$.ajax({
+											type : 'POST',
+											url : 'http://saloonwars.eu1.frbit.net/game/shoot-criminal',
+											data : $('#criminal-id').serialize(),
+											success : function(response) {
+												// update inventory
+												var randomNumber = Math.floor((Math.random() * 5) + 1);
+												var message;
+												switch(randomNumber) {
+													case 1:
+														message = "Bye bye, " + data.client.data.userName + "!";
+														break;
+													case 2:
+														message = "No " + data.client.data.userName + " anymore!";
+														break;
+													case 3:
+														message = "Taste my nitroglycerin, " + data.client.data.userName + "!";
+														break;
+													case 4:
+														message = "Hasta la vista " + data.client.data.userName + "!";
+														break;
+													case 5:
+														message = data.client.data.userName + " is no longer.";
+														break;
+												}
+												if (response.user != null) {
+													shortToast(response.user + " has no bombs left!");
+												} else {
+													navigator.notification.vibrate(1000);
+													shortToast(message);
+													app.BrainSocket.message('shoot.event', {
+														'message' : "You've been shot",
+														'userName' : userObject.userName,
+														'id' : localStorage.getItem('userId'),
+														'targetId' : data.client.data.userId
+													});
+													localStorage.setItem('userBullets', response.bulletsOfficer);
+													bulletsOfficer = response.bulletsOfficer;
+													localStorage.setItem('userOfficerPoints', response.pointsOfficer);
+													$("#bullets").text(response.bulletsOfficer);
+													$("#score").text(response.pointsOfficer);
+												}
+											}
+										});
+									} else {
+										shortToast("Get a bullet to rob " + data.client.data.userName + " from his bombs!");
+									}
+								} else {
+									shortToast("Get in 50 meters of " + data.client.data.userName + " to rob him from his bombs!");
+								}
+							}
+						};
+					})(criminal));
+					users.push(criminal);
+				}
+				// if the user is an officer
+				else {
+					var officerPoints = data.client.data.userOfficerPoints;
+					var officerRank;
+					var rankIcon;
+					if (officerPoints < 1000) {
+						officerRank = "cadet";
+						rankIcon = '../img/cadet-location.svg';
+
+					} else if (officerPoints >= 1000 && officerPoints < 5000) {
+						officerRank = "officer";
+						rankIcon = '../img/officer-location.svg';
+
+					} else if (officerPoints >= 5000 && officerPoints < 10000) {
+						officerRank = "sherrif";
+						rankIcon = '../img/sherrif-location.svg';
+
+					} else if (officerPoints >= 10000 && officerPoints < 20000) {
+						officerRank = "lieutanant";
+						rankIcon = '../img/lieutanant-location.svg';
+
+					} else if (officerPoints >= 20000 && officerPoints < 50000) {
+						officerRank = "captain";
+						rankIcon = '../img/captain-location.svg';
+
+					} else if (officerPoints >= 50000 && officerPoints < 100000) {
+						officerRank = "major";
+						rankIcon = '../img/major-location.svg';
+
+					} else if (officerPoints >= 100000 && officerPoints < 200000) {
+						officerRank = "colonel";
+						rankIcon = '../img/colonel-location.svg';
+
+					} else if (officerPoints >= 200000 && officerPoints < 500000) {
+						officerRank = "general";
+						rankIcon = '../img/general-location.svg';
+
+					} else if (officerPoints >= 500000 && officerPoints < 1000000) {
+						officerRank = "marshal";
+						rankIcon = '../img/marshal-location.svg';
+
+					} else if (officerPoints >= 1000000) {
+						officerRank = "god of justice";
+						rankIcon = '../img/god-of-justice-location.svg';
+					}
+					else{
+						officerRank = "cadet";
+						rankIcon = "../img/cadet-location.svg";
+					}
+					var officer = new google.maps.Marker({
+						map : map,
+						position : new google.maps.LatLng(data.client.data.latitude, data.client.data.longitude),
+						title : data.client.data.userName,
+						id : data.client.data.userId,
+						icon : rankIcon,
+						rank : officerRank
+					});
+					google.maps.event.addListener(officer, 'click', (function(officer) {
+						// if the user clicks on a cop
+						return function() {
+							// and the user is a criminal
+							if ((localStorage.getItem('userRole')) == 0) {
+								shortToast('Watch out for ' + officer.rank + " " + data.client.data.userName + '!');
+							}
+							// and the user is a criminal
+							else if ((localStorage.getItem('userRole')) == 1) {
+								shortToast("It's " + officer.rank + " " + data.client.data.userName + "!");
+							}
+						};
+					})(officer));
+					users.push(officer);
+				}
+			}
+
+			function updateUser(user, data) {
+				var latlng = new google.maps.LatLng(data.client.data.latitude, data.client.data.longitude);
+				user.setPosition(latlng);
+			}
+
+			function initLocationProcedure() {
+				initializeMap();
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(displayAndWatch, locError, {
+						enableHighAccuracy : true,
+						timeout : 60000,
+						maximumAge : 0
+					});
+				} else {
+					alert("Your phone does not support the Geolocation API");
+				}
+			}
+
+			// function to remove the markers from the map
+			function setAllMap(map) {
+				for (var i = 0; i < markers.length; i++) {
+					if ( typeof (markers[i]) != "undefined") {
+						markers[i].setMap(map);
+					}
+				}
+			}
+
+			// function to remove the users from the map
+			function removeUser(map) {
+				for (var i = 0; i < users.length; i++) {
+					if ( typeof (users[i]) != "undefined") {
+						users[i].setMap(map);
+					}
+				}
+			}
+
+			function alertCriminal(data) {
+				shortToast(data.client.data.message + " by " + data.client.data.userName);
+				navigator.notification.vibrate(1000);
+				$("#shot-id #userId").val(data.client.data.userId);
+				$.ajax({
+					type : 'POST',
+					url : 'http://saloonwars.eu1.frbit.net/game/bombs-criminal',
+					data : $('#shot-id').serialize(),
+					success : function(shootData) {
+						$("#bombs").text(shootData.numberOfBombs);
+						localStorage.SetItem('userBombs', shootdata.numberOfBombs);
+					},
+					error : function(xhr, ajaxOptions, thrownError) {
+						console.log(xhr.responseText);
+					}
+				});
+			}
+
+
+			app.BrainSocket.Event.listen('app.success', function(data) {
+				console.log('An app success message was sent from the ws server!');
+				console.log(data);
+			});
+
+			function onLoad() {
+				document.addEventListener("deviceready", onDeviceReady, true);
+				//document.addEventListener("online", onOnline, false);
+				document.addEventListener("offline", onOffline, false);
+			}
+
+			function onOnline() {
+				initializeMap();
+				displayAndWatch(userLocation);
+				shortToast('You are now logged in');
+			}
+
+			function onOffline() {
+				$("#map_canvas").empty();
+				longToast("Please check your internet connection.");
+			}
+
+			function onDeviceReady() {
+				if (localStorage.length != 0) {
+					var userRole = localStorage.getItem('userRole');
+					$(".userId").val(localStorage.getItem('userId'));
+					if (userRole == 1) {
+						$("#bombsContainer").empty();
+						$('#bullets').text(localStorage.getItem('userBullets'));
+						$('#score').text(localStorage.getItem('userOfficerPoints'));
+						getBullets();
+					} else {
+						$("#bulletsContainer").empty();
+						$('#bombs').text(localStorage.getItem('userBombs'));
+						$('#score').text(localStorage.getItem('userCriminalPoints'));
+						getBombs();
+					}
+					initLocationProcedure();
+					$('#logoutBtn').on('touchstart', function(e) {
+						window.location.href = "../index.html";
+						$('.alert').empty();
+						localStorage.clear();
+						shortToast('You are now logged out');
+						e.preventDefault();
+						$.ajax({
+							url : 'http://saloonwars.eu1.frbit.net/user/logout',
+							type : 'post',
+							dataType : 'json',
+							data : $('#logoutFrm').serialize(),
+							success : function(data) {
+							},
+							error : function(xhr, ajaxOptions, thrownError) {
+								$(".alert").append(xhr.responseText);
+							}
+						});
+						return false;
+					});
+				} else {
+					window.location.href = "../index.html";
+					shortToast('Please login');
+				}
+				$("#highscores").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'highscores.html';
+				});
+				$("#account").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'dashboard.html';
+				});
+				$("#logo").on('touchstart', function(e) {
+					e.preventDefault();
+					window.location.href = 'play.html';
+				});
+			}
+		</script>
+	</body>
+</html>

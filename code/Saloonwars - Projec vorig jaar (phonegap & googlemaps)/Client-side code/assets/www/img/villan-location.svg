@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="40.75px" height="40.25px" viewBox="0 0 40.75 40.25" enable-background="new 0 0 40.75 40.25" xml:space="preserve">
+<pattern  x="-619.125" y="420.625" width="54.667" height="8" patternUnits="userSpaceOnUse" id="SVGID_2_" viewBox="0 -8 54.667 8" overflow="visible">
+	<g>
+		<polygon fill="none" points="0,0 54.667,0 54.667,-8 0,-8 		"/>
+		<g>
+			<polygon fill="none" points="0,-8 54.667,-8 54.667,0 0,0 			"/>
+			<g>
+				<polygon fill="none" points="0,0 54.667,0 54.667,-8 0,-8 				"/>
+				<polygon points="54.667,-4 0,-4 0,-8 54.667,-8 				"/>
+				<polygon fill="#FFFFFF" points="54.667,0 0,0 0,-4 54.667,-4 				"/>
+			</g>
+		</g>
+	</g>
+</pattern>
+<path d="M12.114,8.915l-0.806-0.806l0.403-6.648c0,0,5.241-1.612,8.664-1.209v24.073c0,0-6.548-0.706-7.656-7.152
+	c0,0-3.022-1.208-2.921-2.921c0.101-1.711,2.317-1.997,2.317-1.997v-3.34H12.114z"/>
+<path d="M28.318,8.915l0.805-0.806l-0.402-6.648c0,0-5.24-1.612-8.664-1.209v24.073c0,0,6.548-0.706,7.656-7.152
+	c0,0,3.023-1.208,2.922-2.921c-0.102-1.711-0.906-1.776-2.316-1.997V8.915L28.318,8.915z"/>
+<g>
+	<path fill="url(#SVGID_2_)" stroke="#000000" stroke-width="0.25" stroke-miterlimit="10" d="M19.884,26.682
+		c0,0-5.704-1.615-6.22-2.69c-0.516-1.076-2.124-1.21-2.417-1.21c-0.292,0-1.195-0.268-2.227,1.951
+		c-1.032,2.22-1.29,13.078-2.193,15.519h4.42l2.108-10.071v10.07h7.174"/>
+	<path fill="url(#SVGID_2_)" stroke="#000000" stroke-width="0.25" stroke-miterlimit="10" d="M21.176,26.682
+		c0,0,5.703-1.615,6.221-2.69c0.517-1.076,2.125-1.21,2.418-1.21c0.291,0,1.191-0.268,2.228,1.951
+		c1.031,2.22,1.289,13.078,2.19,15.519h-4.418l-2.11-10.071v10.07h-7.172"/>
+</g>
+<rect x="15.094" y="28.622" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="10.871" height="8.21"/>
+<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M15.276,24.979c0,0-0.816,2.932,0,3.646"/>
+<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M25.729,28.622c0,0,1.041-1.823-0.295-3.644"/>
+<text transform="matrix(1 0 0 1 19.4785 34.2129)" font-family="'Rockwell'" font-size="4.2837">6</text>
+</svg>

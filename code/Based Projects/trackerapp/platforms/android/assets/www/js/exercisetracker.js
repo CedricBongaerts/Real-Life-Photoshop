@@ -25,7 +25,6 @@ document.addEventListener("deviceready", function(){
 
 });
 
-
 var track_id = '';      // Name/ID of the exercise
 var watch_id = null;    // ID of the geolocation
 var tracking_data = []; // Array containing GPS position objects

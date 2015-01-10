@@ -7014,3 +7014,11 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.angular-google-map-container {
+  height: 100%;
+  width: 100%;
+  position: absolute; }
+
+.scroll {
+  height: 100%; }

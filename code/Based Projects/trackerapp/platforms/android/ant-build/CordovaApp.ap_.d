@@ -1,60 +1,60 @@
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\CordovaApp.ap_ \
- : c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-hdpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-land-hdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-land-ldpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-land-mdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-land-xhdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-ldpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-mdpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-port-hdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-port-ldpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-port-mdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-port-xhdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\drawable-xhdpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\values\strings.xml \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\res\xml\config.xml \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-hdpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-land-hdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-land-ldpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-land-mdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-land-xhdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-ldpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-mdpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-port-hdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-port-ldpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-port-mdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-port-xhdpi\screen.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\res\drawable-xhdpi\icon.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\_where-is-www.txt \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\cordova.js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\cordova_plugins.js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\img \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\index.html \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\index.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile-1.4.5.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.external-png-1.4.5.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.external-png-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.icons-1.4.5.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.icons-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-png-1.4.5.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-png-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-svg-1.4.5.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-svg-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.structure-1.4.5.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.structure-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.theme-1.4.5.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\css\jquery.mobile.theme-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\img\logo.png \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\js\exercisetracker.js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\js\index.js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\js\jquery-1.7.2.min.js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\js\jquery.mobile-1.4.5.min.css \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\js\jquery.mobile-1.4.5.min.js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\assets\www\js\json2.js \
-c:\Real-Life-Photoshop\code\trackerapp\platforms\android\ant-build\AndroidManifest.xml \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\CordovaApp.ap_ \
+ : c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-hdpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-land-hdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-land-ldpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-land-mdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-land-xhdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-ldpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-mdpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-port-hdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-port-ldpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-port-mdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-port-xhdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\drawable-xhdpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\values\strings.xml \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\res\xml\config.xml \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-hdpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-land-hdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-land-ldpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-land-mdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-land-xhdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-ldpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-mdpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-port-hdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-port-ldpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-port-mdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-port-xhdpi\screen.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\res\drawable-xhdpi\icon.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\_where-is-www.txt \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\cordova.js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\cordova_plugins.js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\img \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\index.html \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\index.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile-1.4.5.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.external-png-1.4.5.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.external-png-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.icons-1.4.5.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.icons-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-png-1.4.5.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-png-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-svg-1.4.5.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.inline-svg-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.structure-1.4.5.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.structure-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.theme-1.4.5.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\css\jquery.mobile.theme-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\img\logo.png \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\js\exercisetracker.js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\js\index.js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\js\jquery-1.7.2.min.js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\js\jquery.mobile-1.4.5.min.css \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\js\jquery.mobile-1.4.5.min.js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\assets\www\js\json2.js \
+c:\Real-Life-Photoshop\code\Based Projects\trackerapp\platforms\android\ant-build\AndroidManifest.xml \

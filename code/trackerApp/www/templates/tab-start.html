@@ -1,0 +1,12 @@
+<ion-view view-title="Start">
+  <ion-content class="padding">
+  <label class="item item-input">
+    <input type="text" placeholder="Art Name" ng-model="art.name">
+  </label>
+ <button class="button button-block button-balanced" ng-click="startStopButtonClicked()">
+  {{started && 'Stop! ' + art.name || 'Start!'}}
+</button>
+
+{{art | json }}
+  </ion-content>
+</ion-view>

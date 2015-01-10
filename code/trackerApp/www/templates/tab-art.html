@@ -1,0 +1,9 @@
+<ion-view view-title="Art">
+<ion-content>
+<div class="list">
+<ion-list>
+          <ion-item ng-repeat="art in artlist" 
+                    href="#/tab/art/{{art.name}}">{{art.name}}</ion-item>
+      </ion-list>
+</ion-content>
+</ion-view>

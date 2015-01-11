@@ -8,6 +8,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
     });
 })
 
+
 .controller('StartCtrl', function($scope) {
 	$scope.art={ name: "", coords:[]};
 	var watchId=null;
@@ -34,7 +35,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 			$scope.started = !$scope.started;
 			$scope.art={ name: "", coords:[]};
 			console.log("tracking stopped",watchId);
-			
+			$window.location.reload(true);
 		}
 
 		else{
@@ -50,10 +51,10 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 					//var longitude = pos.coords.longitude;
 					$scope.art.coords.push(pos.coords);
 					console.log($scope.art.coords);
-
+					$scope.$apply();
 				}, function(error) {
 					console.log('Unable to get location: ' + error.message);
-				}, {maximumAge:2000, timeout:2 * 60 * 1000, enableHighAccuracy: true}  
+				}, {maximumAge:1000, timeout:2 * 60 * 1000, enableHighAccuracy: true}  
 
 				);
 
@@ -66,6 +67,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 	if(localStorage.artlist !== "" ){
 		$scope.artlist = JSON.parse(localStorage.artlist);
 	}
+
 })
 
 .controller('ArtDetailCtrl', function($scope, $stateParams, uiGmapGoogleMapApi) {
@@ -78,13 +80,13 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		}
 	});
 
-uiGmapGoogleMapApi.then(function(maps) {
-	$scope.map = { 
-		center: { latitude: $scope.art.coords[0].latitude, longitude: $scope.art.coords[0].longitude }, 
-		zoom: 16
-		 };
-	
-});
+	uiGmapGoogleMapApi.then(function(maps) {
+		$scope.map = { 
+			center: { latitude: $scope.art.coords[0].latitude, longitude: $scope.art.coords[0].longitude }, 
+			zoom: 16
+		};
+
+	});
 
 })
 

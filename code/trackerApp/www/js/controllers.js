@@ -35,7 +35,6 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 			$scope.started = !$scope.started;
 			$scope.art={ name: "", coords:[]};
 			console.log("tracking stopped",watchId);
-			$window.location.reload(true);
 		}
 
 		else{

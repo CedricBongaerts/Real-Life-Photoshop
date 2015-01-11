@@ -1,0 +1,131 @@
+.hero-logo img {
+  height: 10em;
+}
+
+.home{
+  $parallax-window-height: 30em;
+  $parallax-background-height: $parallax-window-height * 1.5;
+
+  .parallax-window {
+    max-height: $parallax-window-height;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    h1 {
+      color: white;
+      font-size: 3.5em;
+      margin-bottom: 10em;
+    }
+  }
+
+  .parallax-static-content {
+    color: #9A9A8A;
+    padding: 8em 0;
+    position: relative;
+    z-index: 9;
+
+
+  }
+
+  .parallax-background {
+    background: url("../img/img9.jpg") repeat;
+    background-size: cover;
+    background-color: beige;
+    background-position: top;
+    height: $parallax-background-height;
+    left: 0;
+    position: absolute;
+    top: - $parallax-window-height / 4;
+    width: 100%;
+    //@include linear-gradient()
+    //@include filter(brightness(40%))
+
+  }
+}
+
+.blog{
+  $parallax-window-height: 30em;
+  $parallax-background-height: $parallax-window-height * 1.5;
+
+  .parallax-window {
+    max-height: $parallax-window-height;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    h1 {
+      color: white;
+      font-size: 3.5em;
+      margin-bottom: 10em;
+    }
+  }
+
+  .parallax-static-content {
+    color: #9A9A8A;
+    padding: 8em 0;
+    position: relative;
+    z-index: 9;
+
+
+  }
+
+  .parallax-background {
+    background: url("../img/img1.jpg") repeat;
+    background-size: cover;
+    background-color: beige;
+    background-position: top;
+    height: $parallax-background-height;
+    left: 0;
+    position: absolute;
+    top: - $parallax-window-height / 4;
+    width: 100%;
+    //@include linear-gradient()
+    //@include filter(brightness(40%))
+
+  }
+}
+
+.portfolio{
+  $parallax-window-height: 30em;
+  $parallax-background-height: $parallax-window-height * 1.5;
+
+  .parallax-window {
+    max-height: $parallax-window-height;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    h1 {
+      color: white;
+      font-size: 3.5em;
+      margin-bottom: 10em;
+    }
+  }
+
+  .parallax-static-content {
+    color: #9A9A8A;
+    padding: 8em 0;
+    position: relative;
+    z-index: 9;
+  }
+
+  .parallax-background {
+    background: url("../img/img7.jpg") repeat;
+    background-size: cover;
+    background-color: beige;
+    background-position: top;
+    height: $parallax-background-height;
+    left: 0;
+    position: absolute;
+    top: - $parallax-window-height / 4;
+    width: 100%;
+    //@include linear-gradient()
+    //@include filter(brightness(40%))
+
+  }
+
+  
+}
+
+// Based on http://codepen.io/skeurentjes/

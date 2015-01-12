@@ -3,10 +3,8 @@
   <label class="item item-input">
     <input type="text" placeholder="Art Name" ng-model="art.name">
   </label>
- <button class="button button-block button-positive" ng-click="startStopButtonClicked()">
-  {{started && 'Stop! ' + art.name || 'Start!'}}
-</button>
-
-{{art | json }}
+	<button class="button button-block button-positive" ng-click="startStopButtonClicked()">
+	  {{started && 'Stop! ' + art.name || 'Start!'}}
+	</button>
   </ion-content>
 </ion-view>

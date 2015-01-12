@@ -4,7 +4,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 	uiGmapGoogleMapApiProvider.configure({
         //    key: 'your api key',
         v: '3.17',
-        libraries: 'weather,geometry,visualization'
+        libraries: 'visualization'
     });
 })
 
@@ -38,26 +38,29 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		}
 
 		else{
-			//van stop naar start clickevent
-			$scope.started = !$scope.started;
 
-			//GPS enablen
-			watchId = navigator.geolocation.watchPosition(
-				function(pos) {
-					console.log(pos.coords.latitude);
-					//var latitude = pos.coords.latitude;
-					console.log(pos.coords.longitude);
-					//var longitude = pos.coords.longitude;
-					$scope.art.coords.push(pos.coords);
-					console.log($scope.art.coords);
-					$scope.$apply();
-				}, function(error) {
-					console.log('Unable to get location: ' + error.message);
-				}, {maximumAge:1000, timeout:2 * 60 * 1000, enableHighAccuracy: true}  
+			if ($scope.art.name !== "") {
+				//van stop naar start clickevent
+				$scope.started = !$scope.started;
 
-				);
+				//GPS enablen
+				watchId = navigator.geolocation.watchPosition(
+					function(pos) {
+						console.log(pos.coords.latitude);
+						console.log(pos.coords.longitude);
+						$scope.art.coords.push(pos.coords);
+						
+					}, function(error) {
+						console.log('Unable to get location: ' + error.message);
+					}, {maximumAge:5000, timeout:2 * 60 * 1000, enableHighAccuracy: true}  
 
-			console.log("tracking started",watchId);
+					);
+
+				console.log("tracking started",watchId);
+			}
+			else{
+				alert("Please fill in a name.");
+			}
 		}
 	};
 })

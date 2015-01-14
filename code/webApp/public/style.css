@@ -28,6 +28,13 @@ body:before {
  * http://bitters.bourbon.io
  * Copyright 2013ÔÇô2014 thoughtbot, inc.
  * MIT License */
+/*Grapefruit*/
+/* $main-color:#ED5565;
+$second-color:#DA4453; */
+/*Mint*/
+/*Dark*/
+/* $third-color:#34495e;
+$fourth-color:#2c3e50; */
 button,
 input[type="submit"] {
   -webkit-font-smoothing: antialiased;
@@ -53,7 +60,7 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: white;
   color: #333;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1em;
   line-height: 1.5; }
 
@@ -63,7 +70,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
   line-height: 1.25;
   margin: 0;
   text-rendering: optimizeLegibility; }
@@ -135,7 +142,7 @@ input,
 label,
 select {
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1em; }
 
 label {
@@ -159,7 +166,7 @@ select[multiple=multiple] {
   border-radius: 3px;
   border: 1px solid #DDD;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 1em;
   margin-bottom: 0.75em;
   padding: 0.5em 0.5em;
@@ -455,7 +462,7 @@ input[type="submit"] {
           .hero .hero-inner .hero-copy h1 {
             font-size: 2.5em; } }
       .hero .hero-inner .hero-copy p {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-family: "Raleway", sans-serif;
         margin-bottom: 3em;
         font-weight: 200;
         line-height: 1.4em; }
@@ -756,7 +763,7 @@ html, body {
       height: 5em; } }
 
 .footer-2 {
-  background: black;
+  background: #434A54;
   padding: 1.5em;
   width: 100%; }
   .footer-2 .footer-logo {
@@ -1046,5 +1053,84 @@ html, body {
     display: table; }
   .bullets:after {
     clear: both; }
+
+#band1 {
+  background: #37BC9B;
+  color: #F5F7FA;
+  height: 60em; }
+  #band1 div {
+    *zoom: 1;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5em 0em; }
+    #band1 div:before, #band1 div:after {
+      content: " ";
+      display: table; }
+    #band1 div:after {
+      clear: both; }
+
+#band2 {
+  background: #F5F7FA;
+  color: #434A54;
+  height: 40em; }
+  #band2 div {
+    *zoom: 1;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5em 0em; }
+    #band2 div:before, #band2 div:after {
+      content: " ";
+      display: table; }
+    #band2 div:after {
+      clear: both; }
+
+#band3 {
+  background: #434A54;
+  color: #F5F7FA;
+  height: 60em; }
+  #band3 div {
+    *zoom: 1;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5em 0em; }
+    #band3 div:before, #band3 div:after {
+      content: " ";
+      display: table; }
+    #band3 div:after {
+      clear: both; }
+
+#band4 {
+  background: #37BC9B;
+  color: #F5F7FA;
+  height: 40em; }
+  #band4 div {
+    *zoom: 1;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5em 0em; }
+    #band4 div:before, #band4 div:after {
+      content: " ";
+      display: table; }
+    #band4 div:after {
+      clear: both; }
+
+#band5 {
+  color: #434A54;
+  height: 20em; }
+  #band5 div {
+    *zoom: 1;
+    max-width: 68em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5em 0em; }
+    #band5 div:before, #band5 div:after {
+      content: " ";
+      display: table; }
+    #band5 div:after {
+      clear: both; }
 
 /*# sourceMappingURL=style.css.map */

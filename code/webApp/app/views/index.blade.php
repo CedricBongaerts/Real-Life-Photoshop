@@ -1,15 +1,36 @@
 @extends('layouts.default')
 @section('body')
-<div id="about">
-	<div id="left-content">
-		<h1>Intro</h1>
-	</div>
-	<div id="right-content">
-		
+<div id="band1">
+	<div>
+		<h1>Band 1</h1>
 	</div>
 </div>
 
-<ul class="bullets">
+<div id="band2">
+	<div>
+		<h1>Band 2</h1>
+	</div>
+</div>
+
+<div id="band3">
+	<div>
+		<h1>Band 3</h1>
+	</div>
+</div>
+
+<div id="band4">
+	<div>
+		<h1>Band 4</h1>
+	</div>
+</div>
+
+<div id="band5">
+	<div>
+		<h1>Band 5</h1>
+	</div>
+</div>
+
+<!-- <ul class="bullets">
 	<li class="bullet">
 		<div class="main-img">
 			
@@ -25,5 +46,5 @@
 		<div class="main-img">
 		</div>
 	</li>
-</ul>
+</ul> -->
 @stop

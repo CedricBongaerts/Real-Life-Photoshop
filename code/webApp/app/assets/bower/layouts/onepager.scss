@@ -5,3 +5,54 @@
 .bullets{
 	@include outer-container;
 }
+
+#band1{
+	
+	background:$second-color;
+	color: $light-font;
+	height:60em;
+	div {
+		@include outer-container;
+		padding: 5em 0em;
+	}
+}
+
+#band2{
+	background:$light-gray1;
+	color: $dark-font;
+	height:40em;
+	div {
+		@include outer-container;
+		padding: 5em 0em;
+	}
+}
+
+#band3{
+	background:$dark-gray2;
+	color: $light-font;
+	height:60em;
+	div {
+		@include outer-container;
+		padding: 5em 0em;
+	}
+}
+
+#band4{
+	background:$second-color;
+	color: $light-font;
+	height:40em;
+	div {
+		@include outer-container;
+		padding: 5em 0em;
+	}
+}
+
+#band5{
+	//background:$second-color;
+	color: $dark-font;
+	height:20em;
+	div {
+		@include outer-container;
+		padding: 5em 0em;
+	}
+}

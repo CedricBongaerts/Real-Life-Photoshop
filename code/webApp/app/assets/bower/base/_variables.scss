@@ -4,9 +4,9 @@ $my-font: 'Raleway', sans-serif;
 //$my-font: "Sanchez", serif;
 
 //$body-font: 'Source Sans Pro', sans-serif;
-//$body-font: 'Raleway', sans-serif;
+$body-font: 'Raleway', sans-serif;
 //$body-font: 'Merriweather', serif;
-$body-font: "Questrial", sans-serif;
+//$body-font: "Questrial", sans-serif;
 
 //$my-color:#C7FFEA;
 $my-color:#eee;
@@ -15,12 +15,45 @@ $mint:#b2ffe4;
 $mid-mint: #006642;
 $dark-mint: #004d32;
 
+$light-gray1:#F5F7FA;
+$light-gray2:#E6E9ED;
+
+$dark-gray1:#656D78;
+$dark-gray2:#434A54;
+
+/*Grapefruit*/
+/* $main-color:#ED5565;
+$second-color:#DA4453; */
+
+/*Aqua*/
+/* $main-color:#4FC1E9;
+$second-color:#3BAFDA; */
+
+/*Grass*/
+/* $main-color:#A0D468;
+$second-color:#8CC152; */
+
+/*Sunflower*/
+/* $main-color:#FFCE54;
+$second-color:#F6BB42; */
+
+/*Mint*/
+$main-color:#48CFAD;
+$second-color:#37BC9B;
+
+/*Dark*/
+/* $third-color:#34495e;
+$fourth-color:#2c3e50; */
+
+$light-font:#F5F7FA;
+$dark-font:#434A54;
+
 
 // Typography
 $sans-serif: $helvetica;
 $serif: $georgia;
-$base-font-family: $sans-serif;
-$header-font-family: $base-font-family;
+$base-font-family: $body-font;
+$header-font-family: $my-font;
 
 // Font Sizes
 $base-font-size: 1em;

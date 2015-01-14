@@ -9,7 +9,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 })
 
 
-.controller('StartCtrl', function($scope) {
+.controller('StartCtrl', function($scope, uiGmapGoogleMapApi) {
 	$scope.art={ name: "", coords:[]};
 	var watchId=null;
 	$scope.started = false;
@@ -18,6 +18,14 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		localStorage.setItem('artlist', JSON.stringify([]));
 		console.log("localstorage set");
 	}
+
+	uiGmapGoogleMapApi.then(function(maps) {
+		$scope.map = { 
+			center: { latitude: 43.07493, longitude: -89.381388 }, 
+			zoom: 16
+		};
+
+	});
 
 	
 
@@ -32,6 +40,8 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 
 			navigator.geolocation.clearWatch(watchId);
 
+			$scope.map.center.latitude = $scope.art.coords[$scope.art.coords.length-1].latitude;
+			$scope.map.center.longitude = $scope.art.coords[$scope.art.coords.length-1].longitude;
 			$scope.started = !$scope.started;
 			$scope.art={ name: "", coords:[]};
 			console.log("tracking stopped",watchId);
@@ -48,8 +58,14 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 					function(pos) {
 						console.log(pos.coords.latitude);
 						console.log(pos.coords.longitude);
-						$scope.art.coords.push(pos.coords);
 						
+						$scope.$apply(function () {
+							$scope.map.center.latitude = pos.coords.latitude;
+							$scope.map.center.longitude = pos.coords.longitude;
+							$scope.pos = pos;
+							$scope.art.coords.push(pos.coords);
+						});
+
 					}, function(error) {
 						console.log('Unable to get location: ' + error.message);
 					}, {maximumAge:5000, timeout:2 * 60 * 1000, enableHighAccuracy: true}  

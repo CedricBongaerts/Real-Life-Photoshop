@@ -24,30 +24,24 @@
   </head>
   <body>
     <div class="wrapper-for-content-outside-of-footer">
-      <header class="centered-navigation">
+      <!-- <header class="centered-navigation">
         <div class="centered-navigation-wrapper">
-          <!-- <a href="index.html" class="mobile-logo">
-            <img src="img/logo.png" alt="Logo image">
-          </a> -->
           <a href="" class="centered-navigation-menu-button">MENU</a>
           <ul class="centered-navigation-menu">
             <li class="nav-link "><a href="#">??</a></li>
             <li class="nav-link">
               <a id="active-link" href="#">TrackerApp</a>
-              <!-- <a href="index.html" class="logo">
-                <img src="img/logo.png" alt="Logo image">
-              </a> -->
             </li>
             <li class="nav-link"><a href="#">Login</a></li>
           </ul>
         </div>
-      </header>
+      </header> -->
       @yield('body')
     </div><!-- wrapper-for-content-outside-of-footer -->
     <footer class="footer-2">
-      <!-- <div class="footer-logo">
+      <div class="footer-logo">
         <a href="#" class="footer-txt">Trackerapp</a>
-      </div> -->
+      </div>
     </footer>
     <script type="text/javascript">
     $(document).ready(function() {

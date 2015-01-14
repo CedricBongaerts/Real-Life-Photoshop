@@ -26,7 +26,7 @@ html, body {
 
 .footer-2 {
   //$footer-background: desaturate(darken($base-accent-color, 20), 30);
-  $footer-background: black;
+  $footer-background: $dark-gray2;
   $footer-color: white;
   $footer-link-color: transparentize($footer-color, .6);
   $footer-disclaimer-color: transparentize($footer-color, .6);

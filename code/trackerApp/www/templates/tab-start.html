@@ -1,14 +1,27 @@
+<<<<<<< HEAD
+<ion-view view-title="Get Creative">
+  <ion-content class="padding" ng-init="init()" scroll="false">
+=======
 <ion-view view-title="Start">
   <ion-content class="">
+>>>>>>> origin/master
   <label class="item item-input">
-    <input type="text" placeholder="Art Name" ng-model="art.name">
+    <input type="text" placeholder="Map Name" ng-model="art.name">
   </label>
 	<button class="button button-block button-positive" ng-click="startStopButtonClicked()">
-	  {{started && 'Stop! ' + art.name || 'Start!'}}
+	  {{started && 'Stop! ' + art.name || 'Start the tracker'}}
 	</button>
+<<<<<<< HEAD
+        <!--<div id="map" data-tap-disabled="true"></div>-->
+        <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+=======
 	<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 			<ui-gmap-polyline path="art.coords" visible='true'
 			geodesic='true' fit="false" editable="false" draggable="false"></ui-gmap-polyline>
 		</ui-gmap-google-map>
+>>>>>>> origin/master
   </ion-content>
+        <!--<ion-footer-bar class="bar-dark">
+        <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
+        </ion-footer-bar>-->
 </ion-view>

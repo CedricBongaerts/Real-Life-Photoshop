@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Run, Track, App">
-    <title>Trackerapp</title>
+    <title>Fun Run</title>
     <meta name="description" content="Trackerapp"/>
     <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
 
@@ -21,45 +21,21 @@
     <link href='http://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
   
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!--<script type="text/javascript" src="js/video.js"></script>-->
+    <script type="text/javascript">
+    /*$(document).ready(function() {
+        $('video').videoPlayer({
+            'playerWidth' : 0.95,
+            'videoClass' : 'video' 
+        });
+    });*/
+    </script>
+
   </head>
   <body>
-    <!-- <div class="wrapper-for-content-outside-of-footer"> -->
-      <!-- <header class="centered-navigation">
-        <div class="centered-navigation-wrapper">
-          <a href="" class="centered-navigation-menu-button">MENU</a>
-          <ul class="centered-navigation-menu">
-            <li class="nav-link "><a href="#">??</a></li>
-            <li class="nav-link">
-              <a id="active-link" href="#">TrackerApp</a>
-            </li>
-            <li class="nav-link"><a href="#">Login</a></li>
-          </ul>
-        </div>
-      </header> -->
+
       @yield('body')
-    <!-- </div>
- -->    <!-- wrapper-for-content-outside-of-footer -->
 
-    <!-- <footer class="footer-2">
-      <div class="footer-logo">
-        <a href="#" class="footer-txt">Trackerapp</a>
-      </div>
-    </footer> -->
-    <script type="text/javascript">
-    $(document).ready(function() {
-      var menu = $('.centered-navigation-menu');
-      var menuToggle = $('.centered-navigation-menu-button');
-      var signUp = $('.sign-up');
 
-      $(menuToggle).on('click', function(e) {
-        e.preventDefault();
-        menu.slideToggle(function(){
-          if(menu.is(':hidden')) {
-            menu.removeAttr('style');
-          }
-        });
-      });
-    });
-    </script>
   </body>
 </html>

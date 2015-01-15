@@ -30,17 +30,17 @@
 
 /* Button 8g */
 .btn-8g {
-	background: $mint;
-	color: $dark-mint;
+	background: $main-color;
+	color: $dark-font;
 }
 
 .btn-8g:active {
-	background: $mid-mint;
+	background: $second-color;
 }
 
 .btn-8g:hover {
-	background: lighten($mint,10%);
-	color: $dark-mint;
+	background: lighten($main-color,10%);
+	color: $dark-font;
 }
 
 .btn-8g:after,
@@ -55,7 +55,7 @@
 
 .btn-8g:after {
 	top: -98%; /* should be -100% but there's a gap in Chrome Version 34.0.1847.131 */
-	background: $mid-mint;
+	background: $second-color;
 	content: 'It worked!';
 	-webkit-transform-origin: 0% 100%;
 	-webkit-transform: rotateX(90deg);
@@ -69,7 +69,7 @@
 
 .btn-8g:before {
 	top: 100%;
-	background: $mid-mint;
+	background: $second-color;
 	content: 'Error!';
 	font-weight: 700;
 	-webkit-transform-origin: 0% 0%;
@@ -83,7 +83,7 @@
 }
 
 .btn-8g.btn-success3d {
-	background: $mid-mint;
+	background: $second-color;
 	-webkit-transform-origin: 50% 100%;
 	-webkit-transform: rotateX(-90deg) translateY(100%);
 	-moz-transform-origin: 50% 100%;
@@ -95,7 +95,7 @@
 }
 
 .btn-8g.btn-error3d  {
-	background: $mid-mint;
+	background: $second-color;
 	-webkit-transform-origin: 50% 0%;
 	-webkit-transform: rotateX(90deg) translateY(-100%);
 	-moz-transform-origin: 50% 0%;

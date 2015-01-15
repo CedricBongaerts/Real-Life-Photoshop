@@ -1,0 +1,29 @@
+.video-wrapper {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%; 
+// For ratio 16:9. 75% if ratio is 4:3
+  position: relative;
+
+  embed,
+  object,
+  iframe {
+    //@include position(absolute, 0px null null 0px);
+    position: absolute;
+	top: 0px;
+	left: 0px;
+
+	/* position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;*/
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px; 
+	padding: 3em;
+
+    @include size(100%);
+  }
+}

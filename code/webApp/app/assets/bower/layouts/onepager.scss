@@ -1,3 +1,7 @@
+@mixin div-padding{
+	padding: 5em 1em;
+}
+
 #about{
 	@include outer-container;
 }
@@ -19,17 +23,19 @@ $base-height:50em;
 		text-align: center;
 	}
 
-	div {
+	.inner-div {
 		@include outer-container;
-		padding: 5em 1em;
+		@include div-padding;
 	}
 
 	img{
 		//text-align: center;
-		height: 30em;
+		height: auto;
+		width: 30em;
 		margin-left: auto;
 		margin-right: auto;
 		display: block; 
+		padding: 1em 0.5em;
 	}
 }
 
@@ -37,29 +43,34 @@ $base-height:50em;
 	background:$light-gray1;
 	color: $dark-font;
 	height:$base-height;
-	div {
+
+	h1{
+		text-align: center;
+	}
+
+	.inner-div  {
 		@include outer-container;
-		padding: 5em 1em;
+		@include div-padding;
 	}
 }
 
 #band3{
 	background:$light-gray2;
 	color: $dark-font;
-	height:$base-height - 10em;
-	div {
+	height:$base-height - 20em;
+	.inner-div  {
 		@include outer-container;
-		padding: 5em 1em;
+		@include div-padding;
 	}
 }
 
 #band4{
-	background:$second-color;
+	background: white;
 	color: $dark-font;
-	height:$base-height;
-	div {
+	height:$base-height - 10em;
+	.inner-div  {
 		@include outer-container;
-		padding: 5em 1em;
+		@include div-padding;
 	}
 }
 
@@ -67,9 +78,29 @@ $base-height:50em;
 	//background:$second-color;
 	background:$dark-gray2;
 	color: $light-font;
-	height:$base-height - 30em;
-	div {
+	height:$base-height - 35em;
+	.inner-div  {
 		@include outer-container;
-		padding: 5em 1em;
+		padding: 2em 1em;
+	}
+
+	#left-ftr{
+		@include span-columns(4);
+	}
+
+	#right-ftr{
+		@include span-columns(8);
+	}
+
+	.social-icon{
+		height: 3.6em;
+		opacity: 0.8;
+		float: right;
+		//padding-left:0.5em;
+		padding:0.4em;
+
+		&:hover{
+			opacity: 1;
+		}
 	}
 }

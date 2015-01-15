@@ -45,8 +45,9 @@ $second-color:#37BC9B;
 /* $third-color:#34495e;
 $fourth-color:#2c3e50; */
 
-$light-font:#F5F7FA;
+/* $light-font:#F5F7FA; */
 /* $dark-font:#434A54; */
+$light-font:#fff;
 $dark-font:#434A54;
 
 
@@ -58,7 +59,7 @@ $header-font-family: $my-font;
 
 // Font Sizes
 $base-font-size: 1em;
-$h1-font-size: $base-font-size * 2.25;
+$h1-font-size: $base-font-size * 3;
 $h2-font-size: $base-font-size * 2;
 $h3-font-size: $base-font-size * 1.75;
 $h4-font-size: $base-font-size * 1.5;

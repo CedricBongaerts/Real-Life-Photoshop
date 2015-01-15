@@ -23,7 +23,7 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
   </head>
   <body>
-    <div class="wrapper-for-content-outside-of-footer">
+    <!-- <div class="wrapper-for-content-outside-of-footer"> -->
       <!-- <header class="centered-navigation">
         <div class="centered-navigation-wrapper">
           <a href="" class="centered-navigation-menu-button">MENU</a>
@@ -37,12 +37,14 @@
         </div>
       </header> -->
       @yield('body')
-    </div><!-- wrapper-for-content-outside-of-footer -->
-    <footer class="footer-2">
+    <!-- </div>
+ -->    <!-- wrapper-for-content-outside-of-footer -->
+
+    <!-- <footer class="footer-2">
       <div class="footer-logo">
         <a href="#" class="footer-txt">Trackerapp</a>
       </div>
-    </footer>
+    </footer> -->
     <script type="text/javascript">
     $(document).ready(function() {
       var menu = $('.centered-navigation-menu');

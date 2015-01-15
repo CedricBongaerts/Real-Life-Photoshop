@@ -6,53 +6,70 @@
 	@include outer-container;
 }
 
+$base-height:50em;
+
 #band1{
 	
 	background:$second-color;
-	color: $light-font;
-	height:60em;
+	color: $dark-font;
+	height:$base-height;
+
+	#tagline{
+		font-size: 3em;
+		text-align: center;
+	}
+
 	div {
 		@include outer-container;
-		padding: 5em 0em;
+		padding: 5em 1em;
+	}
+
+	img{
+		//text-align: center;
+		height: 30em;
+		margin-left: auto;
+		margin-right: auto;
+		display: block; 
 	}
 }
 
 #band2{
 	background:$light-gray1;
 	color: $dark-font;
-	height:40em;
+	height:$base-height;
 	div {
 		@include outer-container;
-		padding: 5em 0em;
+		padding: 5em 1em;
 	}
 }
 
 #band3{
-	background:$dark-gray2;
-	color: $light-font;
-	height:60em;
+	background:$light-gray2;
+	color: $dark-font;
+	height:$base-height - 10em;
 	div {
 		@include outer-container;
-		padding: 5em 0em;
+		padding: 5em 1em;
 	}
 }
 
 #band4{
 	background:$second-color;
-	color: $light-font;
-	height:40em;
+	color: $dark-font;
+	height:$base-height;
 	div {
 		@include outer-container;
-		padding: 5em 0em;
+		padding: 5em 1em;
 	}
 }
 
 #band5{
 	//background:$second-color;
-	color: $dark-font;
-	height:20em;
+	background:$dark-gray2;
+	color: $light-font;
+	height:$base-height - 30em;
 	div {
 		@include outer-container;
-		padding: 5em 0em;
+		padding: 5em 1em;
 	}
 }

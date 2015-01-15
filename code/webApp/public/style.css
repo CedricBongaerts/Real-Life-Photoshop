@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/* Sass command
+sass --watch style.scss:../../../public/style.css */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -7,12 +9,12 @@
 body:before {
   content: '';
   display: inline-block;
-  background-image: deprecated-webkit-gradient(linear, left top, left bottom, transparent 0, green 0, green 6.17215%, transparent 6.17215%, transparent 8.5298%, green 8.5298%, green 14.70196%, transparent 14.70196%, transparent 17.05961%, green 17.05961%, green 23.23176%, transparent 23.23176%, transparent 25.58941%, green 25.58941%, green 31.76157%, transparent 31.76157%, transparent 34.11922%, green 34.11922%, green 40.29137%, transparent 40.29137%, transparent 42.64902%, green 42.64902%, green 48.82117%, transparent 48.82117%, transparent 51.17883%, green 51.17883%, green 57.35098%, transparent 57.35098%, transparent 59.70863%, green 59.70863%, green 65.88078%, transparent 65.88078%, transparent 68.23843%, green 68.23843%, green 74.41059%, transparent 74.41059%, transparent 76.76824%, green 76.76824%, green 82.94039%, transparent 82.94039%, transparent 85.29804%, green 85.29804%, green 91.4702%, transparent 91.4702%, transparent 93.82785%, green 93.82785%, green 100.0%, transparent 100.0%);
-  background-image: -webkit-linear-gradient(left, transparent 0, green 0, green 6.17215%, transparent 6.17215%, transparent 8.5298%, green 8.5298%, green 14.70196%, transparent 14.70196%, transparent 17.05961%, green 17.05961%, green 23.23176%, transparent 23.23176%, transparent 25.58941%, green 25.58941%, green 31.76157%, transparent 31.76157%, transparent 34.11922%, green 34.11922%, green 40.29137%, transparent 40.29137%, transparent 42.64902%, green 42.64902%, green 48.82117%, transparent 48.82117%, transparent 51.17883%, green 51.17883%, green 57.35098%, transparent 57.35098%, transparent 59.70863%, green 59.70863%, green 65.88078%, transparent 65.88078%, transparent 68.23843%, green 68.23843%, green 74.41059%, transparent 74.41059%, transparent 76.76824%, green 76.76824%, green 82.94039%, transparent 82.94039%, transparent 85.29804%, green 85.29804%, green 91.4702%, transparent 91.4702%, transparent 93.82785%, green 93.82785%, green 100.0%, transparent 100.0%);
-  background-image: -moz-linear-gradient(left, transparent 0, green 0, green 6.17215%, transparent 6.17215%, transparent 8.5298%, green 8.5298%, green 14.70196%, transparent 14.70196%, transparent 17.05961%, green 17.05961%, green 23.23176%, transparent 23.23176%, transparent 25.58941%, green 25.58941%, green 31.76157%, transparent 31.76157%, transparent 34.11922%, green 34.11922%, green 40.29137%, transparent 40.29137%, transparent 42.64902%, green 42.64902%, green 48.82117%, transparent 48.82117%, transparent 51.17883%, green 51.17883%, green 57.35098%, transparent 57.35098%, transparent 59.70863%, green 59.70863%, green 65.88078%, transparent 65.88078%, transparent 68.23843%, green 68.23843%, green 74.41059%, transparent 74.41059%, transparent 76.76824%, green 76.76824%, green 82.94039%, transparent 82.94039%, transparent 85.29804%, green 85.29804%, green 91.4702%, transparent 91.4702%, transparent 93.82785%, green 93.82785%, green 100.0%, transparent 100.0%);
-  background-image: -ms-linear-gradient(left, transparent 0, green 0, green 6.17215%, transparent 6.17215%, transparent 8.5298%, green 8.5298%, green 14.70196%, transparent 14.70196%, transparent 17.05961%, green 17.05961%, green 23.23176%, transparent 23.23176%, transparent 25.58941%, green 25.58941%, green 31.76157%, transparent 31.76157%, transparent 34.11922%, green 34.11922%, green 40.29137%, transparent 40.29137%, transparent 42.64902%, green 42.64902%, green 48.82117%, transparent 48.82117%, transparent 51.17883%, green 51.17883%, green 57.35098%, transparent 57.35098%, transparent 59.70863%, green 59.70863%, green 65.88078%, transparent 65.88078%, transparent 68.23843%, green 68.23843%, green 74.41059%, transparent 74.41059%, transparent 76.76824%, green 76.76824%, green 82.94039%, transparent 82.94039%, transparent 85.29804%, green 85.29804%, green 91.4702%, transparent 91.4702%, transparent 93.82785%, green 93.82785%, green 100.0%, transparent 100.0%);
-  background-image: -o-linear-gradient(left, transparent 0, green 0, green 6.17215%, transparent 6.17215%, transparent 8.5298%, green 8.5298%, green 14.70196%, transparent 14.70196%, transparent 17.05961%, green 17.05961%, green 23.23176%, transparent 23.23176%, transparent 25.58941%, green 25.58941%, green 31.76157%, transparent 31.76157%, transparent 34.11922%, green 34.11922%, green 40.29137%, transparent 40.29137%, transparent 42.64902%, green 42.64902%, green 48.82117%, transparent 48.82117%, transparent 51.17883%, green 51.17883%, green 57.35098%, transparent 57.35098%, transparent 59.70863%, green 59.70863%, green 65.88078%, transparent 65.88078%, transparent 68.23843%, green 68.23843%, green 74.41059%, transparent 74.41059%, transparent 76.76824%, green 76.76824%, green 82.94039%, transparent 82.94039%, transparent 85.29804%, green 85.29804%, green 91.4702%, transparent 91.4702%, transparent 93.82785%, green 93.82785%, green 100.0%, transparent 100.0%);
-  background-image: linear-gradient(left, transparent 0, green 0, green 6.17215%, transparent 6.17215%, transparent 8.5298%, green 8.5298%, green 14.70196%, transparent 14.70196%, transparent 17.05961%, green 17.05961%, green 23.23176%, transparent 23.23176%, transparent 25.58941%, green 25.58941%, green 31.76157%, transparent 31.76157%, transparent 34.11922%, green 34.11922%, green 40.29137%, transparent 40.29137%, transparent 42.64902%, green 42.64902%, green 48.82117%, transparent 48.82117%, transparent 51.17883%, green 51.17883%, green 57.35098%, transparent 57.35098%, transparent 59.70863%, green 59.70863%, green 65.88078%, transparent 65.88078%, transparent 68.23843%, green 68.23843%, green 74.41059%, transparent 74.41059%, transparent 76.76824%, green 76.76824%, green 82.94039%, transparent 82.94039%, transparent 85.29804%, green 85.29804%, green 91.4702%, transparent 91.4702%, transparent 93.82785%, green 93.82785%, green 100.0%, transparent 100.0%);
+  background-image: deprecated-webkit-gradient(linear, left top, left bottom, transparent 0, gray 0, gray 6.17215%, transparent 6.17215%, transparent 8.5298%, gray 8.5298%, gray 14.70196%, transparent 14.70196%, transparent 17.05961%, gray 17.05961%, gray 23.23176%, transparent 23.23176%, transparent 25.58941%, gray 25.58941%, gray 31.76157%, transparent 31.76157%, transparent 34.11922%, gray 34.11922%, gray 40.29137%, transparent 40.29137%, transparent 42.64902%, gray 42.64902%, gray 48.82117%, transparent 48.82117%, transparent 51.17883%, gray 51.17883%, gray 57.35098%, transparent 57.35098%, transparent 59.70863%, gray 59.70863%, gray 65.88078%, transparent 65.88078%, transparent 68.23843%, gray 68.23843%, gray 74.41059%, transparent 74.41059%, transparent 76.76824%, gray 76.76824%, gray 82.94039%, transparent 82.94039%, transparent 85.29804%, gray 85.29804%, gray 91.4702%, transparent 91.4702%, transparent 93.82785%, gray 93.82785%, gray 100.0%, transparent 100.0%);
+  background-image: -webkit-linear-gradient(left, transparent 0, gray 0, gray 6.17215%, transparent 6.17215%, transparent 8.5298%, gray 8.5298%, gray 14.70196%, transparent 14.70196%, transparent 17.05961%, gray 17.05961%, gray 23.23176%, transparent 23.23176%, transparent 25.58941%, gray 25.58941%, gray 31.76157%, transparent 31.76157%, transparent 34.11922%, gray 34.11922%, gray 40.29137%, transparent 40.29137%, transparent 42.64902%, gray 42.64902%, gray 48.82117%, transparent 48.82117%, transparent 51.17883%, gray 51.17883%, gray 57.35098%, transparent 57.35098%, transparent 59.70863%, gray 59.70863%, gray 65.88078%, transparent 65.88078%, transparent 68.23843%, gray 68.23843%, gray 74.41059%, transparent 74.41059%, transparent 76.76824%, gray 76.76824%, gray 82.94039%, transparent 82.94039%, transparent 85.29804%, gray 85.29804%, gray 91.4702%, transparent 91.4702%, transparent 93.82785%, gray 93.82785%, gray 100.0%, transparent 100.0%);
+  background-image: -moz-linear-gradient(left, transparent 0, gray 0, gray 6.17215%, transparent 6.17215%, transparent 8.5298%, gray 8.5298%, gray 14.70196%, transparent 14.70196%, transparent 17.05961%, gray 17.05961%, gray 23.23176%, transparent 23.23176%, transparent 25.58941%, gray 25.58941%, gray 31.76157%, transparent 31.76157%, transparent 34.11922%, gray 34.11922%, gray 40.29137%, transparent 40.29137%, transparent 42.64902%, gray 42.64902%, gray 48.82117%, transparent 48.82117%, transparent 51.17883%, gray 51.17883%, gray 57.35098%, transparent 57.35098%, transparent 59.70863%, gray 59.70863%, gray 65.88078%, transparent 65.88078%, transparent 68.23843%, gray 68.23843%, gray 74.41059%, transparent 74.41059%, transparent 76.76824%, gray 76.76824%, gray 82.94039%, transparent 82.94039%, transparent 85.29804%, gray 85.29804%, gray 91.4702%, transparent 91.4702%, transparent 93.82785%, gray 93.82785%, gray 100.0%, transparent 100.0%);
+  background-image: -ms-linear-gradient(left, transparent 0, gray 0, gray 6.17215%, transparent 6.17215%, transparent 8.5298%, gray 8.5298%, gray 14.70196%, transparent 14.70196%, transparent 17.05961%, gray 17.05961%, gray 23.23176%, transparent 23.23176%, transparent 25.58941%, gray 25.58941%, gray 31.76157%, transparent 31.76157%, transparent 34.11922%, gray 34.11922%, gray 40.29137%, transparent 40.29137%, transparent 42.64902%, gray 42.64902%, gray 48.82117%, transparent 48.82117%, transparent 51.17883%, gray 51.17883%, gray 57.35098%, transparent 57.35098%, transparent 59.70863%, gray 59.70863%, gray 65.88078%, transparent 65.88078%, transparent 68.23843%, gray 68.23843%, gray 74.41059%, transparent 74.41059%, transparent 76.76824%, gray 76.76824%, gray 82.94039%, transparent 82.94039%, transparent 85.29804%, gray 85.29804%, gray 91.4702%, transparent 91.4702%, transparent 93.82785%, gray 93.82785%, gray 100.0%, transparent 100.0%);
+  background-image: -o-linear-gradient(left, transparent 0, gray 0, gray 6.17215%, transparent 6.17215%, transparent 8.5298%, gray 8.5298%, gray 14.70196%, transparent 14.70196%, transparent 17.05961%, gray 17.05961%, gray 23.23176%, transparent 23.23176%, transparent 25.58941%, gray 25.58941%, gray 31.76157%, transparent 31.76157%, transparent 34.11922%, gray 34.11922%, gray 40.29137%, transparent 40.29137%, transparent 42.64902%, gray 42.64902%, gray 48.82117%, transparent 48.82117%, transparent 51.17883%, gray 51.17883%, gray 57.35098%, transparent 57.35098%, transparent 59.70863%, gray 59.70863%, gray 65.88078%, transparent 65.88078%, transparent 68.23843%, gray 68.23843%, gray 74.41059%, transparent 74.41059%, transparent 76.76824%, gray 76.76824%, gray 82.94039%, transparent 82.94039%, transparent 85.29804%, gray 85.29804%, gray 91.4702%, transparent 91.4702%, transparent 93.82785%, gray 93.82785%, gray 100.0%, transparent 100.0%);
+  background-image: linear-gradient(left, transparent 0, gray 0, gray 6.17215%, transparent 6.17215%, transparent 8.5298%, gray 8.5298%, gray 14.70196%, transparent 14.70196%, transparent 17.05961%, gray 17.05961%, gray 23.23176%, transparent 23.23176%, transparent 25.58941%, gray 25.58941%, gray 31.76157%, transparent 31.76157%, transparent 34.11922%, gray 34.11922%, gray 40.29137%, transparent 40.29137%, transparent 42.64902%, gray 42.64902%, gray 48.82117%, transparent 48.82117%, transparent 51.17883%, gray 51.17883%, gray 57.35098%, transparent 57.35098%, transparent 59.70863%, gray 59.70863%, gray 65.88078%, transparent 65.88078%, transparent 68.23843%, gray 68.23843%, gray 74.41059%, transparent 74.41059%, transparent 76.76824%, gray 76.76824%, gray 82.94039%, transparent 82.94039%, transparent 85.29804%, gray 85.29804%, gray 91.4702%, transparent 91.4702%, transparent 93.82785%, gray 93.82785%, gray 100.0%, transparent 100.0%);
   height: 100%;
   left: 0;
   margin: 0 auto;
@@ -31,10 +33,20 @@ body:before {
 /*Grapefruit*/
 /* $main-color:#ED5565;
 $second-color:#DA4453; */
+/*Aqua*/
+/* $main-color:#4FC1E9;
+$second-color:#3BAFDA; */
+/*Grass*/
+/* $main-color:#A0D468;
+$second-color:#8CC152; */
+/*Sunflower*/
+/* $main-color:#FFCE54;
+$second-color:#F6BB42; */
 /*Mint*/
-/*Dark*/
+/*DarkBlue*/
 /* $third-color:#34495e;
 $fourth-color:#2c3e50; */
+/* $dark-font:#434A54; */
 button,
 input[type="submit"] {
   -webkit-font-smoothing: antialiased;
@@ -73,7 +85,8 @@ h6 {
   font-family: "Raleway", sans-serif;
   line-height: 1.25;
   margin: 0;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility;
+  font-weight: 400; }
 
 h1 {
   font-size: 2.25em; }
@@ -1056,30 +1069,38 @@ html, body {
 
 #band1 {
   background: #37BC9B;
-  color: #F5F7FA;
-  height: 60em; }
+  color: #434A54;
+  height: 50em; }
+  #band1 #tagline {
+    font-size: 3em;
+    text-align: center; }
   #band1 div {
     *zoom: 1;
     max-width: 68em;
     margin-left: auto;
     margin-right: auto;
-    padding: 5em 0em; }
+    padding: 5em 1em; }
     #band1 div:before, #band1 div:after {
       content: " ";
       display: table; }
     #band1 div:after {
       clear: both; }
+  #band1 img {
+    height: 30em;
+    margin-left: auto;
+    margin-right: auto;
+    display: block; }
 
 #band2 {
   background: #F5F7FA;
   color: #434A54;
-  height: 40em; }
+  height: 50em; }
   #band2 div {
     *zoom: 1;
     max-width: 68em;
     margin-left: auto;
     margin-right: auto;
-    padding: 5em 0em; }
+    padding: 5em 1em; }
     #band2 div:before, #band2 div:after {
       content: " ";
       display: table; }
@@ -1087,15 +1108,15 @@ html, body {
       clear: both; }
 
 #band3 {
-  background: #434A54;
-  color: #F5F7FA;
-  height: 60em; }
+  background: #E6E9ED;
+  color: #434A54;
+  height: 40em; }
   #band3 div {
     *zoom: 1;
     max-width: 68em;
     margin-left: auto;
     margin-right: auto;
-    padding: 5em 0em; }
+    padding: 5em 1em; }
     #band3 div:before, #band3 div:after {
       content: " ";
       display: table; }
@@ -1104,14 +1125,14 @@ html, body {
 
 #band4 {
   background: #37BC9B;
-  color: #F5F7FA;
-  height: 40em; }
+  color: #434A54;
+  height: 50em; }
   #band4 div {
     *zoom: 1;
     max-width: 68em;
     margin-left: auto;
     margin-right: auto;
-    padding: 5em 0em; }
+    padding: 5em 1em; }
     #band4 div:before, #band4 div:after {
       content: " ";
       display: table; }
@@ -1119,14 +1140,15 @@ html, body {
       clear: both; }
 
 #band5 {
-  color: #434A54;
+  background: #434A54;
+  color: #F5F7FA;
   height: 20em; }
   #band5 div {
     *zoom: 1;
     max-width: 68em;
     margin-left: auto;
     margin-right: auto;
-    padding: 5em 0em; }
+    padding: 5em 1em; }
     #band5 div:before, #band5 div:after {
       content: " ";
       display: table; }

@@ -9,11 +9,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 })
 
 
-<<<<<<< HEAD
-.controller('StartCtrl', function($scope, $ionicLoading, $compile, uiGmapGoogleMapApi) {
-=======
 .controller('StartCtrl', function($scope, uiGmapGoogleMapApi) {
->>>>>>> origin/master
 	$scope.art={ name: "", coords:[]};
 	var watchId=null;
 	$scope.started = false;
@@ -83,55 +79,6 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 			}
 		}
 	};
-
-	uiGmapGoogleMapApi.then(function(maps) {
-		$scope.map = { 
-			center: { latitude: 51.2192, longitude: 4.4028 }, 
-			zoom: 16
-		};
-
-	});
-
-
-
-    // Niet Werkende map (Wel juiste manier..) 
-    /*    $scope.init = function() {
-        var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
-
-        var mapOptions = {
-          center: myLatlng,
-          zoom: 16,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map"),
-            mapOptions);
-        
-        console.log("map loaded");
-
-        $scope.map = map;
-    };
-
-    $scope.centerOnMe = function() {
-        if(!$scope.map) {
-            return;
-        }
-
-        $scope.loading = $ionicLoading.show({
-          content: 'Getting current location...',
-          showBackdrop: false
-        });
-
-        navigator.geolocation.getCurrentPosition(function(pos) {
-          $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-          $ionicLoading.hide();
-        }, function(error) {
-          alert('Unable to get location: ' + error.message);
-        });
-    };
-
-    $scope.clickTest = function() {
-        alert('Example of infowindow with ng-click');
-    };*/
 })
 
 .controller('ArtCtrl', function($scope) {
@@ -141,7 +88,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 
 })
 
-.controller('ArtDetailCtrl', function($scope, $stateParams, uiGmapGoogleMapApi, $ionicPopup) {
+.controller('ArtDetailCtrl', function($scope, $stateParams, uiGmapGoogleMapApi) {
 	console.log($stateParams.artId);
 	var artlist = JSON.parse(localStorage.artlist);
 	artlist.some(function(entry) {
@@ -158,8 +105,8 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 		};
 
 	});
-        
-        $scope.takeScreenshot = function() {
+
+	$scope.takeScreenshot = function() {
         navigator.screenshot.save((function(e, r) {
           if (e) {
             $ionicPopup.alert({
@@ -183,8 +130,8 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
           }
         }), 'jpg', 50, 'randomScreenshot');
       };
-})
+	})
 
 .controller('HomeCtrl', function($scope) {
-   
-});
+
+})

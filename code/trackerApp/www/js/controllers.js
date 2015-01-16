@@ -88,7 +88,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 
 })
 
-.controller('ArtDetailCtrl', function($scope, $stateParams, uiGmapGoogleMapApi) {
+.controller('ArtDetailCtrl', function($scope, $stateParams, uiGmapGoogleMapApi, $ionicPopup) {
 	console.log($stateParams.artId);
 	var artlist = JSON.parse(localStorage.artlist);
 	artlist.some(function(entry) {

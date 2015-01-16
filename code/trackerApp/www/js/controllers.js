@@ -21,7 +21,7 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
 
 	uiGmapGoogleMapApi.then(function(maps) {
 		$scope.map = { 
-			center: { latitude: 43.07493, longitude: -89.381388 }, 
+			center: { latitude: 51.2192, longitude: 4.4028 }, 
 			zoom: 16
 		};
 

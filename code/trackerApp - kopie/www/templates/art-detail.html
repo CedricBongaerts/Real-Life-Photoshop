@@ -1,0 +1,11 @@
+<ion-view view-title="{{art.name}}">
+	<ion-content scroll="false">
+		<ui-gmap-google-map center='map.center' zoom=16>
+			<ui-gmap-polyline path="art.coords" visible='true'
+				geodesic='true' fit="true" editable="false" draggable="false"></ui-gmap-polyline>
+			</ui-gmap-google-map>
+                <div class="bar bar-footer">
+                         <button class="button button-block button-positive" ng-click="takeScreenshot()">Take a screenshot & Share it!</button>
+                </div>
+	</ion-content>
+</ion-view>

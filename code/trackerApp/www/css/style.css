@@ -1,5 +1,52 @@
 /* Empty. Add your own CSS if you like */
 
-#height{
-    height: 90%;
+.body{
+    background: #11c1f3;
 }
+
+.HomeLogo{
+    position: relative;
+    display: block;
+    margin: 20px auto;
+}
+
+.information{
+    color: #2c3e50;
+    text-align: center;
+}
+
+.galleryHead{
+    color: #2c3e50;
+    text-align: center;
+}
+
+@media screen and (max-width: 690px) {
+    .HomeLogo{
+    height: 570px    
+    }
+}
+
+@media screen and (max-width: 590px) {
+    .HomeLogo{
+    height: 470px    
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .HomeLogo{
+    height: 370px    
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .HomeLogo{
+    height: 270px    
+    }
+}
+
+@media screen and (max-width: 290px) {
+    .HomeLogo{
+    height: 170px    
+    }
+}
+

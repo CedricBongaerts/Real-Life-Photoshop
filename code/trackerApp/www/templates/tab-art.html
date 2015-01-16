@@ -1,8 +1,9 @@
-<ion-view view-title="Graphic list" cache-view="false">
-<ion-content>
+<ion-view view-title="Gallery" cache-view="false">
+<ion-content scroll="false">
 <div class="list">
 <ion-list>
-    <ion-item ng-repeat="art in artlist" href="#/tab/art/{{art.name}}">Map name: {{art.name}}</ion-item>
+    <h4 class='galleryHead'>Maps: </h4>
+    <ion-item ng-repeat="art in artlist" href="#/tab/art/{{art.name}}">{{art.name}}</ion-item>
     
     <div id="social-media"></div>
       </ion-list>

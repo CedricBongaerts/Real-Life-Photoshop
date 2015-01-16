@@ -1,10 +1,10 @@
-<ion-view view-title="Start">
-  <ion-content class="">
+<ion-view view-title="Start Drawing">
+  <ion-content scroll="false">
   <label class="item item-input">
     <input type="text" placeholder="Art Name" ng-model="art.name">
   </label>
 	<button class="button button-block button-positive" ng-click="startStopButtonClicked()">
-	  {{started && 'Stop! ' + art.name || 'Start!'}}
+	  {{started && 'Stop! ' + art.name || 'Get Creative!'}}
 	</button>
 	<ui-gmap-google-map center='map.center' zoom='map.zoom'>
 			<ui-gmap-polyline path="art.coords" visible='true'

@@ -12,7 +12,7 @@
     <link href="style.css" rel="stylesheet">
 
 
-    <!-- <link rel="shortcut icon" href="img/icon.ico"> -->
+    <link rel="shortcut icon" href="img/icon.ico">
 
     <link href='http://fonts.googleapis.com/css?family=Sanchez:400italic,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900' rel='stylesheet' type='text/css'>

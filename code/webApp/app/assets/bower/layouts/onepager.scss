@@ -58,6 +58,20 @@ $base-height:50em;
 	background:$light-gray2;
 	color: $dark-font;
 	height:$base-height - 20em;
+
+	a {
+		//float: left;
+	}
+
+	#android{
+		width: 4em;
+		height: auto;
+		//margin-right: 2em;
+		margin: 15px 50px;
+		//padding: 1em;
+		//float: left;
+	}
+
 	.inner-div  {
 		@include outer-container;
 		@include div-padding;
@@ -65,9 +79,9 @@ $base-height:50em;
 }
 
 #band4{
-	background: white;
+	background: $main-color;
 	color: $dark-font;
-	height:$base-height - 10em;
+	height:$base-height - 25em;
 	.inner-div  {
 		@include outer-container;
 		@include div-padding;
@@ -90,6 +104,18 @@ $base-height:50em;
 
 	#right-ftr{
 		@include span-columns(8);
+	}
+
+	p{
+		margin-bottom: 0;
+	}
+
+	a{
+		color: darken($light-font,40);
+		//margin-top: 0.5em;
+		&:hover{
+			color: darken($light-font,20);
+		}
 	}
 
 	.social-icon{

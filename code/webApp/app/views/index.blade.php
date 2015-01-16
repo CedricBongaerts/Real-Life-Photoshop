@@ -25,9 +25,12 @@
 		<div class="device-background">
 		  <div class="device-text">
 		    <h1>Download the App</h1>
-		    <p>Experience a new way of running and creating. But the most important part have a lot of fun. Share your creations on twitter or facebook.</p>
+		    <p>Experience a new way of running and creating. But the most important part is to have a lot of fun. Share your creations.</p>
 		    <!-- <button class="btn btn-8 btn-8g">Download for Android</button> -->
-		    <a href="#" class="btn btn-8 btn-8g">Download for Android</a>
+		    
+<!-- 		    <img id="android" src="img/android.png">
+ -->		    <a href="#" class="btn btn-8 btn-8g">Download for Android</a>
+		  	
 		  </div>
 		  <div class="device">
 		    <div class="screen"></div>
@@ -38,8 +41,8 @@
 
 <div id="band4">
 	<div class="inner-div">
-		<h1>Comments? How to?</h1>
-	</div>
+<!-- 		<h1>Comments? How to?</h1>
+ -->	</div>
 </div>
 
 <div id="band5">
@@ -47,16 +50,15 @@
 		<div id="left-ftr">
 			<h2>Contact</h2>
 			<p>Cedric Bongaerts</p>
+			<a href="mailto:cedric.bongaerts@student.kdg.be">cedric.bongaerts@student.kdg.be</a>
 			<p>Verena Vertonghen</p>
+			<a href="mailto:verena.vertonghen@student.kdg.be">verena.vertonghen@student.kdg.be</a>
 		</div>
 		<div id="right-ftr">
 			<img class="social-icon" src="img/grey/facebook.png">
 			<img class="social-icon" src="img/grey/twitter.png">
 			<img class="social-icon" src="img/grey/you_tube.png">
 			<img class="social-icon" src="img/grey/vimeo.png">
-			<!-- <img class="social-icon" src="img/grey/flickr.png">
-			<img class="social-icon" src="img/grey/dribbble.png">
-			<img class="social-icon" src="img/grey/google+.png"> -->
 		</div>
 	</div>
 </div>

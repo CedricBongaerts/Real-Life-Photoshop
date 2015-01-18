@@ -129,8 +129,8 @@ angular.module('starter.controllers', ['uiGmapgoogle-maps'])
             });
           }
         }), 'jpg', 50, 'randomScreenshot');
-      };
-	})
+    };
+})
 
 .controller('HomeCtrl', function($scope) {
 
